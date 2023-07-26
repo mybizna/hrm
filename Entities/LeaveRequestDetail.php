@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class LeaveRequestDetail extends BaseModel
 {
 
@@ -15,6 +18,54 @@ class LeaveRequestDetail extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_leave_request_detail";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->ordering(true);
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->ordering(true);
+        $fields->name('workingday_status')->type('number')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table('user')->ordering(true);
+        $fields->name('f_year')->type('number')->ordering(true);
+        $fields->name('leave_date')->type('date')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/2');
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->group('w-1/2');
+        $fields->name('workingday_status')->type('number')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/2');
+        $fields->name('f_year')->type('number')->group('w-1/2');
+        $fields->name('leave_date')->type('date')->group('w-1/2');
+
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+
+        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/6');
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->group('w-1/6');
+        $fields->name('workingday_status')->type('number')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/6');
+        $fields->name('f_year')->type('number')->group('w-1/6');
+        
+
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

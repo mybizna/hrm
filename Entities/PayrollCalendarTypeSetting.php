@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class PayrollCalendarTypeSetting extends BaseModel
 {
 
@@ -14,6 +17,48 @@ class PayrollCalendarTypeSetting extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_payroll_calendar_type_setting";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->ordering(true);
+        $fields->name('cal_type')->type('number')->ordering(true);
+        $fields->name('pay_day')->type('number')->ordering(true);
+        $fields->name('custom_month_day')->type('number')->ordering(true);
+        $fields->name('pay_day_mode')->type('number')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->group('w-1/2');
+        $fields->name('cal_type')->type('number')->group('w-1/2');
+        $fields->name('pay_day')->type('number')->group('w-1/2');
+        $fields->name('custom_month_day')->type('number')->group('w-1/2');
+        $fields->name('pay_day_mode')->type('number')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->group('w-1/6');
+        $fields->name('cal_type')->type('number')->group('w-1/6');
+        $fields->name('pay_day')->type('number')->group('w-1/6');
+        $fields->name('custom_month_day')->type('number')->group('w-1/6');
+
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

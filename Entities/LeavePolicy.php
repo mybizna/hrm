@@ -2,8 +2,10 @@
 
 namespace Modules\Hrm\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Base\Entities\BaseModel;
+use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Core\Classes\Views\ListTable;
 
 class LeavePolicy extends BaseModel
 {
@@ -12,11 +14,76 @@ class LeavePolicy extends BaseModel
         'leave_id', 'description', 'days', 'color', 'apply_limit', 'employee_type', 'department_id',
         'location_id', 'designation_id', 'gender', 'marital', 'f_year', 'apply_for_new_users',
         'carryover_days', 'carryover_uses_limit', 'encashment_based_on', 'forward_default',
-        'applicable_from_days', 'accrued_amount', 'accrued_max_days', 'halfday_enable'
+        'applicable_from_days', 'accrued_amount', 'accrued_max_days', 'halfday_enable',
     ];
     public $migrationDependancy = [];
     protected $table = "hrm_leave_policy";
 
+    public function listTable()
+    {
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
+        $fields->name('days')->type('number')->ordering(true);
+        $fields->name('color')->type('text')->ordering(true);
+        $fields->name('apply_limit')->type('number')->ordering(true);
+        $fields->name('employee_type')->type('text')->ordering(true);
+        $fields->name('department_id')->type('number')->ordering(true);
+        $fields->name('location_id')->type('number')->ordering(true);
+        $fields->name('designation_id')->type('number')->ordering(true);
+
+        return $fields;
+
+    }
+
+    public function formBuilder()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
+        $fields->name('days')->type('number')->group('w-1/2');
+        $fields->name('color')->type('text')->group('w-1/2');
+        $fields->name('apply_limit')->type('number')->group('w-1/2');
+        $fields->name('employee_type')->type('text')->group('w-1/2');
+        $fields->name('department_id')->type('number')->group('w-1/2');
+        $fields->name('location_id')->type('number')->group('w-1/2');
+        $fields->name('designation_id')->type('number')->group('w-1/2');
+        $fields->name('type')->type('select')->options(['none' => 'None', 'male' => 'Male', 'female' => 'Female', 'other' => 'Other'])->group('w-1/2');
+        $fields->name('marital')->type('select')->options(['none' => 'None', 'single' => 'Single', 'married' => 'Married', 'widowed' => 'Widowed'])->group('w-1/2');
+        $fields->name('f_year')->type('number')->group('w-1/2');
+        $fields->name('apply_for_new_users')->type('number')->group('w-1/2');
+        $fields->name('carryover_days')->type('number')->group('w-1/2');
+        $fields->name('carryover_uses_limit')->type('number')->group('w-1/2');
+        $fields->name('encashment_days')->type('number')->group('w-1/2');
+        $fields->name('encashment_based_on')->type('select')->options(['pay_rate' => 'Pay Rate', 'basic' => 'Basic', 'gross' => 'Gross'])->group('w-1/2');
+        $fields->name('forward_default')->type('select')->options(['encashment' => 'Encashment', 'carryover' => 'Carryover'])->group('w-1/2');
+        $fields->name('applicable_from_days')->type('number')->group('w-1/2');
+        $fields->name('accrued_amount')->type('number')->group('w-1/2');
+        $fields->name('accrued_max_days')->type('number')->group('w-1/2');
+        $fields->name('halfday_enable')->type('number')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter()
+    {
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
+        $fields->name('days')->type('number')->group('w-1/6');
+        $fields->name('color')->type('text')->group('w-1/6');
+        $fields->name('apply_limit')->type('number')->group('w-1/6');
+        $fields->name('employee_type')->type('text')->group('w-1/6');
+        $fields->name('department_id')->type('number')->group('w-1/6');
+        $fields->name('location_id')->type('number')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *
@@ -26,19 +93,18 @@ class LeavePolicy extends BaseModel
     public function migration(Blueprint $table)
     {
 
-
         $table->increments('id');
         $table->unsignedSmallInteger('leave_id')->index('leave_id');
         $table->text('description')->nullable();
         $table->unsignedTinyInteger('days')->default(0);
         $table->string('color', 10)->nullable();
         $table->unsignedTinyInteger('apply_limit')->default(0);
-        $table->enum('employee_type', ['-1', 'permanent', 'parttime', 'contract', 'temporary', 'trainee'])->default('permanent');
+        $table->enum('employee_type', ['none', 'permanent', 'parttime', 'contract', 'temporary', 'trainee'])->default('permanent');
         $table->integer('department_id')->default(-1);
         $table->integer('location_id')->default(-1);
         $table->integer('designation_id')->default(-1);
-        $table->enum('gender', ['-1', 'male', 'female', 'other'])->default('-1');
-        $table->enum('marital', ['-1', 'single', 'married', 'widowed'])->default('-1');
+        $table->enum('gender', ['none', 'male', 'female', 'other'])->default('none');
+        $table->enum('marital', ['none', 'single', 'married', 'widowed'])->default('none');
         $table->unsignedSmallInteger('f_year')->nullable()->index('f_year');
         $table->unsignedTinyInteger('apply_for_new_users')->default(0);
         $table->unsignedTinyInteger('carryover_days')->default(0);

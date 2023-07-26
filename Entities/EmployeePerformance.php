@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class EmployeePerformance extends BaseModel
 {
 
@@ -17,6 +20,59 @@ class EmployeePerformance extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_employee_performance";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->ordering(true);
+        $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->ordering(true);
+        $fields->name('job_knowledge')->type('text')->ordering(true);
+        $fields->name('work_quality')->type('text')->ordering(true);
+        $fields->name('attendance')->type('text')->ordering(true);
+        $fields->name('communication')->type('text')->ordering(true);
+        $fields->name('dependablity')->type('text')->ordering(true);
+        $fields->name('reviewer')->type('recordpicker')->table('hrm_employee')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('job_knowledge')->type('text')->group('w-1/2');
+        $fields->name('work_quality')->type('text')->group('w-1/2');
+        $fields->name('attendance')->type('text')->group('w-1/2');
+        $fields->name('communication')->type('text')->group('w-1/2');
+        $fields->name('dependablity')->type('text')->group('w-1/2');
+        $fields->name('reviewer')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('comments')->type('text')->group('w-1/2');
+        $fields->name('completion_date')->type('date')->group('w-1/2');
+        $fields->name('goal_description')->type('textarea')->group('w-full');
+    
+
+
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/6');
+        $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->group('w-1/6');
+        $fields->name('job_knowledge')->type('text')->group('w-1/6');
+        $fields->name('work_quality')->type('text')->group('w-1/6');
+        
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

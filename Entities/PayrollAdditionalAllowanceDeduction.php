@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class PayrollAdditionalAllowanceDeduction extends BaseModel
 {
 
@@ -14,6 +17,52 @@ class PayrollAdditionalAllowanceDeduction extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_payroll_additional_allowance_deduction";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('pay_item_id')->type('recordpicker')->table('hrm_payroll_additional_allowance_deduction')->ordering(true);
+        $fields->name('pay_item_amount')->type('number')->ordering(true);
+        $fields->name('empid')->type('number')->ordering(true);
+        $fields->name('pay_item_add_or_deduct')->type('number')->ordering(true);
+        $fields->name('payrun_id')->type('number')->ordering(true);
+        $fields->name('note')->type('text')->ordering(true);
+
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('pay_item_id')->type('recordpicker')->table('hrm_payroll_additional_allowance_deduction')->group('w-1/2');
+        $fields->name('pay_item_amount')->type('number')->group('w-1/2');
+        $fields->name('empid')->type('number')->group('w-1/2');
+        $fields->name('pay_item_add_or_deduct')->type('number')->group('w-1/2');
+        $fields->name('payrun_id')->type('number')->group('w-1/2');
+        $fields->name('note')->type('text')->group('w-1/2');
+
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('pay_item_id')->type('recordpicker')->table('hrm_payroll_additional_allowance_deduction')->group('w-1/2');
+        $fields->name('pay_item_amount')->type('number')->group('w-1/2');
+        $fields->name('empid')->type('number')->group('w-1/2');
+        $fields->name('pay_item_add_or_deduct')->type('number')->group('w-1/2');
+        
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class LeavePolicySegregation extends BaseModel
 {
 
@@ -15,6 +18,73 @@ class LeavePolicySegregation extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_leave_policy_segregation";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->ordering(true);
+        $fields->name('jan')->type('number')->ordering(true);
+        $fields->name('feb')->type('number')->ordering(true);
+        $fields->name('mar')->type('number')->ordering(true);
+        $fields->name('apr')->type('number')->ordering(true);
+        $fields->name('may')->type('number')->ordering(true);
+        $fields->name('jun')->type('number')->ordering(true);
+        $fields->name('jul')->type('number')->ordering(true);
+        $fields->name('aug')->type('number')->ordering(true);
+        $fields->name('sep')->type('number')->ordering(true);
+        $fields->name('oct')->type('number')->ordering(true);
+        $fields->name('nov')->type('number')->ordering(true);
+        $fields->name('dec')->type('number')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->group('w-1/2');
+        $fields->name('jan')->type('number')->group('w-1/2');
+        $fields->name('feb')->type('number')->group('w-1/2');
+        $fields->name('mar')->type('number')->group('w-1/2');
+        $fields->name('apr')->type('number')->group('w-1/2');
+        $fields->name('may')->type('number')->group('w-1/2');
+        $fields->name('jun')->type('number')->group('w-1/2');
+        $fields->name('jul')->type('number')->group('w-1/2');
+        $fields->name('aug')->type('number')->group('w-1/2');
+        $fields->name('sep')->type('number')->group('w-1/2');
+        $fields->name('oct')->type('number')->group('w-1/2');
+        $fields->name('nov')->type('number')->group('w-1/2');
+        $fields->name('dec')->type('number')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->group('w-1/6');
+        $fields->name('jan')->type('number')->group('w-1/6');
+        $fields->name('feb')->type('number')->group('w-1/6');
+        $fields->name('mar')->type('number')->group('w-1/6');
+        $fields->name('apr')->type('number')->group('w-1/6');
+        $fields->name('may')->type('number')->group('w-1/6');
+        $fields->name('jun')->type('number')->group('w-1/6');
+        $fields->name('jul')->type('number')->group('w-1/6');
+        $fields->name('aug')->type('number')->group('w-1/6');
+        $fields->name('sep')->type('number')->group('w-1/6');
+        $fields->name('oct')->type('number')->group('w-1/6');
+        $fields->name('nov')->type('number')->group('w-1/6');
+        $fields->name('dec')->type('number')->group('w-1/6');
+
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

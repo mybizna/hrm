@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class LeaveEntitlement extends BaseModel
 {
 
@@ -14,6 +17,52 @@ class LeaveEntitlement extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_leave_entitlement";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
+        $fields->name('trn_id')->type('number')->ordering(true);
+        $fields->name('trn_type')->type('text')->ordering(true);
+        $fields->name('day_in')->type('number')->ordering(true);
+        $fields->name('day_out')->type('number')->ordering(true);
+        $fields->name('f_year')->type('number')->ordering(true);
+
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
+        $fields->name('trn_id')->type('number')->group('w-1/2');
+        $fields->name('trn_type')->type('text')->group('w-1/2');
+        $fields->name('day_in')->type('number')->group('w-1/2');
+        $fields->name('day_out')->type('number')->group('w-1/2');
+        $fields->name('f_year')->type('number')->group('w-1/2');
+        $fields->name('description')->type('text')->group('w-full');
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
+        $fields->name('trn_id')->type('number')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

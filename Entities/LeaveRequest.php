@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class LeaveRequest extends BaseModel
 {
 
@@ -15,6 +18,57 @@ class LeaveRequest extends BaseModel
     public $migrationDependancy = [];
     protected $table = "leave_request";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('user_id')->type('recordpicker')->table('user')->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
+        $fields->name('leave_entitlement_id')->type('recordpicker')->table('hrm_leave_entitlement')->ordering(true);
+        $fields->name('day_status_id')->type('recordpicker')->table('hrm_day_status')->ordering(true);
+        $fields->name('days')->type('number')->ordering(true);
+        $fields->name('start_date')->type('datetime')->ordering(true);
+        $fields->name('end_date')->type('datetime')->ordering(true);
+        $fields->name('reason')->type('textarea')->ordering(true);
+        $fields->name('last_status')->type('number')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
+        $fields->name('leave_entitlement_id')->type('recordpicker')->table('hrm_leave_entitlement')->group('w-1/2');
+        $fields->name('day_status_id')->type('recordpicker')->table('hrm_day_status')->group('w-1/2');
+        $fields->name('days')->type('number')->group('w-1/2');
+        $fields->name('start_date')->type('datetime')->group('w-1/2');
+        $fields->name('end_date')->type('datetime')->group('w-1/2');
+        $fields->name('reason')->type('textarea')->group('w-full');
+        $fields->name('last_status')->type('number')->group('w-1/2');
+
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/6');
+        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
+        $fields->name('leave_entitlement_id')->type('recordpicker')->table('hrm_leave_entitlement')->group('w-1/6');
+        $fields->name('day_status_id')->type('recordpicker')->table('hrm_day_status')->group('w-1/6');
+        $fields->name('days')->type('number')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

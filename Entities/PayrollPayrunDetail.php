@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class PayrollPayrunDetail extends BaseModel
 {
 
@@ -15,6 +18,55 @@ class PayrollPayrunDetail extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_payroll_payrun_detail";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('payrun_id')->type('number')->ordering(true);
+        $fields->name('pay_cal_id')->type('number')->ordering(true);
+        $fields->name('payment_date')->type('date')->ordering(true);
+        $fields->name('empid')->type('number')->ordering(true);
+        $fields->name('pay_item_id')->type('number')->ordering(true);
+        $fields->name('pay_item_amount')->type('number')->ordering(true);
+        $fields->name('pay_item_add_or_deduct')->type('number')->ordering(true);
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('payrun_id')->type('number')->group('w-1/2');
+        $fields->name('pay_cal_id')->type('number')->group('w-1/2');
+        $fields->name('payment_date')->type('date')->group('w-1/2');
+        $fields->name('empid')->type('number')->group('w-1/2');
+        $fields->name('pay_item_id')->type('number')->group('w-1/2');
+        $fields->name('pay_item_amount')->type('number')->group('w-1/2');
+        $fields->name('pay_item_add_or_deduct')->type('number')->group('w-1/2');
+        $fields->name('note')->type('text')->group('w-1/2');
+        $fields->name('approve_status')->type('number')->group('w-1/2');
+        
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('payrun_id')->type('number')->group('w-1/6');
+        $fields->name('pay_cal_id')->type('number')->group('w-1/6');
+        $fields->name('payment_date')->type('date')->group('w-1/6');
+        $fields->name('empid')->type('number')->group('w-1/6');
+        
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *

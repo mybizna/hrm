@@ -5,6 +5,9 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
+use Modules\Core\Classes\Views\ListTable;
+use Modules\Core\Classes\Views\FormBuilder;
+
 class FinancialYear extends BaseModel
 {
 
@@ -12,6 +15,44 @@ class FinancialYear extends BaseModel
     public $migrationDependancy = [];
     protected $table = "hrm_financial_year";
 
+
+    public function listTable(){
+        // listing view fields
+        $fields = new ListTable();
+
+        $fields->name('fy_name')->type('text')->ordering(true);
+        $fields->name('start_date')->type('date')->ordering(true);
+        $fields->name('end_date')->type('date')->ordering(true);
+        
+
+        return $fields;
+
+    }
+    
+    public function formBuilder(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('fy_name')->type('text')->group('w-1/2');
+        $fields->name('start_date')->type('date')->group('w-1/2');
+        $fields->name('end_date')->type('date')->group('w-1/2');
+        $fields->name('description')->type('text')->group('w-1/2');
+
+        return $fields;
+
+    }
+
+    public function filter(){
+        // listing view fields
+        $fields = new FormBuilder();
+
+        $fields->name('fy_name')->type('text')->group('w-1/6');
+        $fields->name('start_date')->type('date')->group('w-1/6');
+        $fields->name('end_date')->type('date')->group('w-1/6');
+
+        return $fields;
+
+    }
     /**
      * List of fields for managing postings.
      *
