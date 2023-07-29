@@ -2,26 +2,38 @@
 
 namespace Modules\Hrm\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Core\Classes\Views\ListTable;
-use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class EmployeePerformance extends BaseModel
 {
-
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $fillable = [
         'employee_id', 'reporting_to', 'job_knowledge', 'work_quality', 'attendance',
         'communication', 'dependablity', 'reviewer', 'comments', 'completion_date',
         'goal_description', 'employee_assessment', 'supervisor', 'supervisor_assessment',
-        'type', 'performance_date'
+        'type', 'performance_date',
     ];
-    public $migrationDependancy = [];
+
+    /**
+     * List of tables names that are need in this model during migration.
+     * @var array<string>
+     */
+    public array $migrationDependancy = [];
+
+    /**
+     * The table associated with the model.
+     * @var string
+     */
     protected $table = "hrm_employee_performance";
 
-
-    public function listTable(){
+    public function listTable(): ListTable
+    {
         // listing view fields
         $fields = new ListTable();
 
@@ -37,8 +49,9 @@ class EmployeePerformance extends BaseModel
         return $fields;
 
     }
-    
-    public function formBuilder(){
+
+    public function formBuilder(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -53,15 +66,13 @@ class EmployeePerformance extends BaseModel
         $fields->name('comments')->type('text')->group('w-1/2');
         $fields->name('completion_date')->type('date')->group('w-1/2');
         $fields->name('goal_description')->type('textarea')->group('w-full');
-    
-
-
 
         return $fields;
 
     }
 
-    public function filter(){
+    public function filter(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -69,12 +80,12 @@ class EmployeePerformance extends BaseModel
         $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->group('w-1/6');
         $fields->name('job_knowledge')->type('text')->group('w-1/6');
         $fields->name('work_quality')->type('text')->group('w-1/6');
-        
+
         return $fields;
 
     }
     /**
-     * List of fields for managing postings.
+     * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void

@@ -5,20 +5,34 @@ namespace Modules\Hrm\Entities;
 use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
 
-use Modules\Core\Classes\Views\ListTable;
-use Modules\Core\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Classes\Views\FormBuilder;
 
 class LeaveEntitlement extends BaseModel
 {
-
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $fillable = [
         'user_id','leave_id','trn_id','trn_type','day_in','day_out','description', 'f_year'
     ];
-    public $migrationDependancy = [];
+
+    /**
+     * List of tables names that are need in this model during migration.
+     * @var array<string>
+     */
+    public array $migrationDependancy = [];
+
+    /**
+     * The table associated with the model.
+     * @var string
+     */
     protected $table = "hrm_leave_entitlement";
 
 
-    public function listTable(){
+    public function  listTable(): ListTable
+    {
         // listing view fields
         $fields = new ListTable();
 
@@ -35,7 +49,8 @@ class LeaveEntitlement extends BaseModel
 
     }
     
-    public function formBuilder(){
+    public function formBuilder(): FormBuilder
+{
         // listing view fields
         $fields = new FormBuilder();
 
@@ -52,7 +67,8 @@ class LeaveEntitlement extends BaseModel
 
     }
 
-    public function filter(){
+    public function filter(): FormBuilder
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -64,7 +80,7 @@ class LeaveEntitlement extends BaseModel
 
     }
     /**
-     * List of fields for managing postings.
+     * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void

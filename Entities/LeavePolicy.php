@@ -3,23 +3,36 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
+use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
-use Modules\Core\Classes\Views\FormBuilder;
-use Modules\Core\Classes\Views\ListTable;
 
 class LeavePolicy extends BaseModel
 {
-
+    /**
+     * The fields that can be filled
+     * @var array<string>
+     */
     protected $fillable = [
         'leave_id', 'description', 'days', 'color', 'apply_limit', 'employee_type', 'department_id',
         'location_id', 'designation_id', 'gender', 'marital', 'f_year', 'apply_for_new_users',
         'carryover_days', 'carryover_uses_limit', 'encashment_based_on', 'forward_default',
         'applicable_from_days', 'accrued_amount', 'accrued_max_days', 'halfday_enable',
     ];
-    public $migrationDependancy = [];
+
+    /**
+     * List of tables names that are need in this model during migration.
+     * @var array<string>
+     */
+    public array $migrationDependancy = [];
+
+    /**
+     * The table associated with the model.
+     * @var string
+     */
     protected $table = "hrm_leave_policy";
 
-    public function listTable()
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -68,7 +81,7 @@ class LeavePolicy extends BaseModel
 
     }
 
-    public function filter()
+    public function filter(): FormBuilder
     {
         // listing view fields
         $fields = new FormBuilder();
@@ -85,7 +98,7 @@ class LeavePolicy extends BaseModel
 
     }
     /**
-     * List of fields for managing postings.
+     * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
