@@ -2,34 +2,42 @@
 
 namespace Modules\Hrm\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class WorkExperience extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['employee_id', 'company_name', 'job_title', 'from', 'to', 'description'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_work_experience";
 
-
-    public function  listTable(): ListTable
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -39,14 +47,20 @@ class WorkExperience extends BaseModel
         $fields->name('job_title')->type('text')->ordering(true);
         $fields->name('from')->type('date')->ordering(true);
         $fields->name('to')->type('date')->ordering(true);
-            
 
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -61,6 +75,13 @@ class WorkExperience extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -68,7 +89,7 @@ class WorkExperience extends BaseModel
 
         $fields->name('employee_id')->type('number')->group('w-1/6');
         $fields->name('company_name')->type('text')->group('w-1/6');
-        $fields->name('job_title')->type('text')->group('w-1/6');   
+        $fields->name('job_title')->type('text')->group('w-1/6');
         $fields->name('from')->type('date')->group('w-1/6');
         $fields->name('to')->type('date')->group('w-1/6');
 
@@ -81,7 +102,7 @@ class WorkExperience extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
 
         $table->increments('id');

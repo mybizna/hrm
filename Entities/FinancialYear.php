@@ -2,34 +2,42 @@
 
 namespace Modules\Hrm\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class FinancialYear extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['fy_name', 'start_date', 'end_date', 'description'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_financial_year";
 
-
-    public function  listTable(): ListTable
+/**
+ * Function for defining list of fields in table view.
+ *
+ * @var string
+ *
+ * @return ListTable
+ */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -37,14 +45,18 @@ class FinancialYear extends BaseModel
         $fields->name('fy_name')->type('text')->ordering(true);
         $fields->name('start_date')->type('date')->ordering(true);
         $fields->name('end_date')->type('date')->ordering(true);
-        
 
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -57,6 +69,11 @@ class FinancialYear extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -75,7 +92,7 @@ class FinancialYear extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->string('fy_name')->nullable();

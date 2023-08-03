@@ -2,38 +2,44 @@
 
 namespace Modules\Hrm\Entities;
 
-use Modules\Base\Entities\BaseModel;
 use Illuminate\Database\Schema\Blueprint;
-
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Classes\Views\FormBuilder;
+use Modules\Base\Classes\Views\ListTable;
+use Modules\Base\Entities\BaseModel;
 
 class Employee extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = [
         'user_id', 'employee_id', 'designation', 'department', 'location', 'hiring_source',
         'termination_date', 'date_of_birth', 'reporting_to', 'pay_rate', 'pay_type', 'type',
-        'status'
+        'status',
     ];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_employee";
 
-
-    public function  listTable(): ListTable
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
+    public function listTable(): ListTable
     {
         // listing view fields
         $fields = new ListTable();
@@ -53,13 +59,17 @@ class Employee extends BaseModel
         $fields->name('type')->type('text')->ordering(true);
         $fields->name('status')->type('switch')->ordering(true);
 
-
         return $fields;
 
     }
-    
+
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
-{
+    {
         // listing view fields
         $fields = new FormBuilder();
 
@@ -78,11 +88,15 @@ class Employee extends BaseModel
         $fields->name('type')->type('text')->group('w-1/2');
         $fields->name('status')->type('switch')->group('w-1/2');
 
-
         return $fields;
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -91,7 +105,7 @@ class Employee extends BaseModel
         $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
         $fields->name('employee_id')->type('text')->group('w-1/6');
         $fields->name('designation')->type('recordpicker')->table('hrm_designation')->group('w-1/6');
-        $fields->name('department')->type('recordpicker')->table('hrm_department')->group('w-1/6'); 
+        $fields->name('department')->type('recordpicker')->table('hrm_department')->group('w-1/6');
         $fields->name('location')->type('recordpicker')->table('hrm_location')->group('w-1/6');
 
         return $fields;
@@ -103,7 +117,7 @@ class Employee extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('user_id')->default(0)->index('user_id');

@@ -11,22 +11,30 @@ class EmployeeHistory extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['user_id', 'module', 'category', 'type', 'comment', 'data', 'date'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_employee_history";
 
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
     public function listTable(): ListTable
     {
         // listing view fields
@@ -44,6 +52,11 @@ class EmployeeHistory extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
     {
         // listing view fields
@@ -61,6 +74,11 @@ class EmployeeHistory extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -81,7 +99,7 @@ class EmployeeHistory extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->unsignedBigInteger('user_id')->default(0)->index('user_id');

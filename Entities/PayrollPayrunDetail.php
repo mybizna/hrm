@@ -11,6 +11,7 @@ class PayrollPayrunDetail extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = [
@@ -20,16 +21,25 @@ class PayrollPayrunDetail extends BaseModel
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_payroll_payrun_detail";
 
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
     public function listTable(): ListTable
     {
         // listing view fields
@@ -47,6 +57,13 @@ class PayrollPayrunDetail extends BaseModel
 
     }
 
+    /**
+     * Function for defining form fields in form view.
+     *
+     * @var string
+     *
+     * @return void
+     */
     public function formBuilder(): FormBuilder
     {
         // listing view fields
@@ -66,6 +83,13 @@ class PayrollPayrunDetail extends BaseModel
 
     }
 
+    /**
+     * Function for defining filter fields in filter view.
+     *
+     * @var string
+     *
+     * @return void
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -85,7 +109,7 @@ class PayrollPayrunDetail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->unsignedInteger('payrun_id');

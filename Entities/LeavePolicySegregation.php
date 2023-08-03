@@ -11,6 +11,7 @@ class LeavePolicySegregation extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = [
@@ -20,16 +21,23 @@ class LeavePolicySegregation extends BaseModel
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_leave_policy_segregation";
 
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @return ListTable
+     */
     public function listTable(): ListTable
     {
         // listing view fields
@@ -53,6 +61,11 @@ class LeavePolicySegregation extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
     {
         // listing view fields
@@ -76,6 +89,11 @@ class LeavePolicySegregation extends BaseModel
 
     }
 
+    /**
+     * Function for defining list of fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -104,7 +122,7 @@ class LeavePolicySegregation extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->bigIncrements('id');
         $table->unsignedBigInteger('leave_policy_id')->index('leave_policy_id');

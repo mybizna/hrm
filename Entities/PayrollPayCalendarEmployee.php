@@ -11,22 +11,32 @@ class PayrollPayCalendarEmployee extends BaseModel
 {
     /**
      * The fields that can be filled
+     *
      * @var array<string>
      */
     protected $fillable = ['pay_calendar_id', 'empid'];
 
     /**
      * List of tables names that are need in this model during migration.
+     *
      * @var array<string>
      */
     public array $migrationDependancy = [];
 
     /**
      * The table associated with the model.
+     *
      * @var string
      */
     protected $table = "hrm_payroll_pay_calendar_employee";
 
+    /**
+     * Function for defining list of fields in table view.
+     *
+     * @param Blueprint $table
+     *
+     * @return void
+     */
     public function listTable(): ListTable
     {
         // listing view fields
@@ -39,6 +49,11 @@ class PayrollPayCalendarEmployee extends BaseModel
 
     }
 
+    /**
+     * Function for defining form fields in form view.
+     * 
+     * @return FormBuilder
+     */
     public function formBuilder(): FormBuilder
     {
         // listing view fields
@@ -51,6 +66,11 @@ class PayrollPayCalendarEmployee extends BaseModel
 
     }
 
+    /**
+     * Function for defining filter fields in filter view.
+     * 
+     * @return FormBuilder
+     */
     public function filter(): FormBuilder
     {
         // listing view fields
@@ -69,7 +89,7 @@ class PayrollPayCalendarEmployee extends BaseModel
      *
      * @return void
      */
-    public function migration(Blueprint $table)
+    public function migration(Blueprint $table): void
     {
         $table->increments('id');
         $table->integer('pay_calendar_id');
