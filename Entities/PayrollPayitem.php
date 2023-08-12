@@ -17,6 +17,13 @@ class PayrollPayitem extends BaseModel
     protected $fillable = ['type', 'payitem', 'slug', 'pay_item_add_or_deduct'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['slug'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -53,7 +60,7 @@ class PayrollPayitem extends BaseModel
 
     /**
      * Function for defining form fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -72,7 +79,7 @@ class PayrollPayitem extends BaseModel
 
     /**
      * Function for defining filter fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder

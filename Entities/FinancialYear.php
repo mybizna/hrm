@@ -17,6 +17,13 @@ class FinancialYear extends BaseModel
     protected $fillable = ['fy_name', 'start_date', 'end_date', 'description'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['fy_name'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -52,7 +59,7 @@ class FinancialYear extends BaseModel
 
     /**
      * Function for defining list of fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -71,7 +78,7 @@ class FinancialYear extends BaseModel
 
     /**
      * Function for defining list of fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder

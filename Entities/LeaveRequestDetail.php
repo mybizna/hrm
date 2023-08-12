@@ -19,6 +19,15 @@ class LeaveRequestDetail extends BaseModel
         'user_id', 'f_year', 'leave_date',
     ];
 
+
+
+    /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['leave_request_id', 'leave_approval_status_id', 'user_id'];
+
     /**
      * List of tables names that are need in this model during migration.
      *

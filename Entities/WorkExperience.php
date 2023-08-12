@@ -17,6 +17,12 @@ class WorkExperience extends BaseModel
     protected $fillable = ['employee_id', 'company_name', 'job_title', 'from', 'to', 'description'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['employee_id', 'company_name'];
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>

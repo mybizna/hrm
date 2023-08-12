@@ -20,6 +20,13 @@ class LeaveUnpaid extends BaseModel
     ];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['leave_id', 'leave_request_id'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -58,7 +65,7 @@ class LeaveUnpaid extends BaseModel
 
     /**
      * Function for defining form fields in add/edit view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -81,7 +88,7 @@ class LeaveUnpaid extends BaseModel
 
     /**
      * Function for defining filter fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder

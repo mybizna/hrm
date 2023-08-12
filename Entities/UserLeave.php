@@ -17,6 +17,13 @@ class UserLeave extends BaseModel
     protected $fillable = ['user_id', 'request_id', 'title', 'date'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['user_id', 'request_id'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -51,7 +58,7 @@ class UserLeave extends BaseModel
 
     /**
      * Function for defining list of fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -70,7 +77,7 @@ class UserLeave extends BaseModel
 
     /**
      * Function for defining list of fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder

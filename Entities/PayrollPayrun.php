@@ -17,6 +17,12 @@ class PayrollPayrun extends BaseModel
     protected $fillable = ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['pay_cal_id', 'payment_date'];
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -55,7 +61,7 @@ class PayrollPayrun extends BaseModel
 
     /**
      * Function for defining form fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -76,7 +82,7 @@ class PayrollPayrun extends BaseModel
 
     /**
      * Function for defining filter fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder

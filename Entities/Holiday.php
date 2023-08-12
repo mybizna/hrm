@@ -17,6 +17,13 @@ class Holiday extends BaseModel
     protected $fillable = ['title', 'start', 'end', 'description', 'range_status'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['title'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>

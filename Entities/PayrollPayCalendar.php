@@ -17,6 +17,13 @@ class PayrollPayCalendar extends BaseModel
     protected $fillable = ['pay_calendar_name', 'pay_calendar_type'];
 
     /**
+     * The fields that are to be render when performing relationship queries.
+     *
+     * @var array<string>
+     */
+    public $rec_names = ['pay_calendar_name', 'pay_calendar_type'];
+
+    /**
      * List of tables names that are need in this model during migration.
      *
      * @var array<string>
@@ -51,7 +58,7 @@ class PayrollPayCalendar extends BaseModel
 
     /**
      * Function for defining form fields in form view.
-     * 
+     *
      * @return FormBuilder
      */
     public function formBuilder(): FormBuilder
@@ -68,7 +75,7 @@ class PayrollPayCalendar extends BaseModel
 
     /**
      * Function for defining filter fields in filter view.
-     * 
+     *
      * @return FormBuilder
      */
     public function filter(): FormBuilder
