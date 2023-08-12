@@ -50,7 +50,7 @@ class LeavePolicySegregation extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->ordering(true);
+        $fields->name('leave_policy_id')->type('recordpicker')->table(['hrm', 'leave_policy'])->ordering(true);
         $fields->name('jan')->type('number')->ordering(true);
         $fields->name('feb')->type('number')->ordering(true);
         $fields->name('mar')->type('number')->ordering(true);
@@ -78,7 +78,7 @@ class LeavePolicySegregation extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->group('w-1/2');
+        $fields->name('leave_policy_id')->type('recordpicker')->table(['hrm', 'leave_policy'])->group('w-1/2');
         $fields->name('jan')->type('number')->group('w-1/2');
         $fields->name('feb')->type('number')->group('w-1/2');
         $fields->name('mar')->type('number')->group('w-1/2');
@@ -106,7 +106,7 @@ class LeavePolicySegregation extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_policy_id')->type('recordpicker')->table('hrm_leave_policy')->group('w-1/6');
+        $fields->name('leave_policy_id')->type('recordpicker')->table(['hrm', 'leave_policy'])->group('w-1/6');
         $fields->name('jan')->type('number')->group('w-1/6');
         $fields->name('feb')->type('number')->group('w-1/6');
         $fields->name('mar')->type('number')->group('w-1/6');

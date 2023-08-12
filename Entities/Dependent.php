@@ -48,7 +48,7 @@ class Dependent extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->ordering(true);
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->ordering(true);
         $fields->name('name')->type('text')->ordering(true);
         $fields->name('relation')->type('text')->ordering(true);
         $fields->name('dob')->type('text')->ordering(true);
@@ -67,7 +67,7 @@ class Dependent extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/2');
         $fields->name('name')->type('text')->group('w-1/2');
         $fields->name('relation')->type('text')->group('w-1/2');
         $fields->name('dob')->type('text')->group('w-1/2');
@@ -86,7 +86,7 @@ class Dependent extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/6');
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/6');
         $fields->name('name')->type('text')->group('w-1/6');
         $fields->name('relation')->type('text')->group('w-1/6');
         $fields->name('dob')->type('text')->group('w-1/6');

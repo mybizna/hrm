@@ -49,7 +49,7 @@ class PayrollCalendarTypeSetting extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->ordering(true);
+        $fields->name('pay_calendar_id')->type('recordpicker')->table(['hrm', 'payroll_calendar'])->ordering(true);
         $fields->name('cal_type')->type('number')->ordering(true);
         $fields->name('pay_day')->type('number')->ordering(true);
         $fields->name('custom_month_day')->type('number')->ordering(true);
@@ -69,7 +69,7 @@ class PayrollCalendarTypeSetting extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->group('w-1/2');
+        $fields->name('pay_calendar_id')->type('recordpicker')->table(['hrm', 'payroll_calendar'])->group('w-1/2');
         $fields->name('cal_type')->type('number')->group('w-1/2');
         $fields->name('pay_day')->type('number')->group('w-1/2');
         $fields->name('custom_month_day')->type('number')->group('w-1/2');
@@ -89,7 +89,7 @@ class PayrollCalendarTypeSetting extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('pay_calendar_id')->type('recordpicker')->table('hrm_payroll_calendar')->group('w-1/6');
+        $fields->name('pay_calendar_id')->type('recordpicker')->table(['hrm', 'payroll_calendar'])->group('w-1/6');
         $fields->name('cal_type')->type('number')->group('w-1/6');
         $fields->name('pay_day')->type('number')->group('w-1/6');
         $fields->name('custom_month_day')->type('number')->group('w-1/6');

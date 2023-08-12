@@ -50,10 +50,10 @@ class LeaveEncashmentRequest extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
-        $fields->name('approved_by')->type('recordpicker')->table('users')->ordering(true);
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->ordering(true);
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->ordering(true);
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->ordering(true);
         $fields->name('encash_days')->type('number')->ordering(true);
         $fields->name('forward_days')->type('number')->ordering(true);
         $fields->name('amount')->type('number')->ordering(true);
@@ -74,10 +74,10 @@ class LeaveEncashmentRequest extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
-        $fields->name('approved_by')->type('recordpicker')->table('users')->group('w-1/2');
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->group('w-1/2');
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->group('w-1/2');
         $fields->name('encash_days')->type('number')->group('w-1/2');
         $fields->name('forward_days')->type('number')->group('w-1/2');
         $fields->name('amount')->type('number')->group('w-1/2');
@@ -98,10 +98,10 @@ class LeaveEncashmentRequest extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
-        $fields->name('approved_by')->type('recordpicker')->table('users')->group('w-1/6');
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/6');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/6');
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->group('w-1/6');
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->group('w-1/6');
         $fields->name('encash_days')->type('number')->group('w-1/6');
         $fields->name('forward_days')->type('number')->group('w-1/6');
 

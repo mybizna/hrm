@@ -50,7 +50,7 @@ class Education extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->ordering(true);
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->ordering(true);
         $fields->name('school')->type('text')->ordering(true);
         $fields->name('degree')->type('text')->ordering(true);
         $fields->name('field')->type('text')->ordering(true);
@@ -71,7 +71,7 @@ class Education extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/2');
         $fields->name('school')->type('text')->group('w-1/2');
         $fields->name('degree')->type('text')->group('w-1/2');
         $fields->name('field')->type('text')->group('w-1/2');
@@ -93,7 +93,7 @@ class Education extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('employee_id')->type('recordpicker')->table('hrm_employee')->group('w-1/6');
+        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/6');
         $fields->name('school')->type('text')->group('w-1/6');
         $fields->name('degree')->type('text')->group('w-1/6');
         $fields->name('field')->type('text')->group('w-1/6');

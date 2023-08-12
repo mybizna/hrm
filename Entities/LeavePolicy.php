@@ -52,7 +52,7 @@ class LeavePolicy extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->ordering(true);
         $fields->name('days')->type('number')->ordering(true);
         $fields->name('color')->type('text')->ordering(true);
         $fields->name('apply_limit')->type('number')->ordering(true);
@@ -75,7 +75,7 @@ class LeavePolicy extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
         $fields->name('days')->type('number')->group('w-1/2');
         $fields->name('color')->type('text')->group('w-1/2');
         $fields->name('apply_limit')->type('number')->group('w-1/2');
@@ -111,7 +111,7 @@ class LeavePolicy extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/6');
         $fields->name('days')->type('number')->group('w-1/6');
         $fields->name('color')->type('text')->group('w-1/6');
         $fields->name('apply_limit')->type('number')->group('w-1/6');

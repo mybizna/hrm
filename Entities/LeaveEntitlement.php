@@ -49,8 +49,8 @@ class LeaveEntitlement extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->ordering(true);
         $fields->name('trn_id')->type('number')->ordering(true);
         $fields->name('trn_type')->type('text')->ordering(true);
         $fields->name('day_in')->type('number')->ordering(true);
@@ -71,8 +71,8 @@ class LeaveEntitlement extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
         $fields->name('trn_id')->type('number')->group('w-1/2');
         $fields->name('trn_type')->type('text')->group('w-1/2');
         $fields->name('day_in')->type('number')->group('w-1/2');
@@ -94,8 +94,8 @@ class LeaveEntitlement extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/6');
         $fields->name('trn_id')->type('number')->group('w-1/6');
 
         return $fields;

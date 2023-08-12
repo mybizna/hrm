@@ -50,9 +50,9 @@ class LeaveApprovalStatus extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->ordering(true);
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->ordering(true);
-        $fields->name('approved_by')->type('recordpicker')->table('users')->ordering(true);
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->ordering(true);
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->ordering(true);
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->ordering(true);
 
         return $fields;
 
@@ -68,9 +68,9 @@ class LeaveApprovalStatus extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/2');
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->group('w-1/2');
-        $fields->name('approved_by')->type('recordpicker')->table('users')->group('w-1/2');
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->group('w-1/2');
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->group('w-1/2');
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->group('w-1/2');
         $fields->name('message')->type('text')->group('w-full');
 
         return $fields;
@@ -87,9 +87,9 @@ class LeaveApprovalStatus extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/6');
-        $fields->name('approval_status_id')->type('recordpicker')->table('hrm_approval_status')->group('w-1/6');
-        $fields->name('approved_by')->type('recordpicker')->table('users')->group('w-1/6');
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->group('w-1/6');
+        $fields->name('approval_status_id')->type('recordpicker')->table(['hrm', 'approval_status'])->group('w-1/6');
+        $fields->name('approved_by')->type('recordpicker')->table(['users'])->group('w-1/6');
 
         return $fields;
 

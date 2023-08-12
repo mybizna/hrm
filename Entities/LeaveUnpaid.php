@@ -50,10 +50,10 @@ class LeaveUnpaid extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->ordering(true);
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->ordering(true);
-        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->ordering(true);
-        $fields->name('user_id')->type('recordpicker')->table('user')->ordering(true);
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->ordering(true);
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->ordering(true);
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table(['hrm', 'leave_approval_status'])->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->ordering(true);
         $fields->name('days')->type('number')->ordering(true);
         $fields->name('amount')->type('number')->ordering(true);
         $fields->name('total')->type('number')->ordering(true);
@@ -73,10 +73,10 @@ class LeaveUnpaid extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/2');
-        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->group('w-1/2');
-        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->group('w-1/2');
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table(['hrm', 'leave_approval_status'])->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/2');
         $fields->name('days')->type('number')->group('w-1/2');
         $fields->name('amount')->type('number')->group('w-1/2');
         $fields->name('total')->type('number')->group('w-1/2');
@@ -96,10 +96,10 @@ class LeaveUnpaid extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('leave_id')->type('recordpicker')->table('hrm_leave')->group('w-1/2');
-        $fields->name('leave_request_id')->type('recordpicker')->table('hrm_leave_request')->group('w-1/2');
-        $fields->name('leave_approval_status_id')->type('recordpicker')->table('hrm_leave_approval_status')->group('w-1/2');
-        $fields->name('user_id')->type('recordpicker')->table('user')->group('w-1/2');
+        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
+        $fields->name('leave_request_id')->type('recordpicker')->table(['hrm', 'leave_request'])->group('w-1/2');
+        $fields->name('leave_approval_status_id')->type('recordpicker')->table(['hrm', 'leave_approval_status'])->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/2');
         $fields->name('days')->type('number')->group('w-1/2');
 
         return $fields;

@@ -48,7 +48,7 @@ class PayrollPayrun extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('pay_cal_id')->type('recordpicker')->table('hrm_payroll_pay_calendar')->ordering(true);
+        $fields->name('pay_cal_id')->type('recordpicker')->table(['hrm', 'payroll_pay_calenda'])->ordering(true);
         $fields->name('payment_date')->type('date')->ordering(true);
         $fields->name('from_date')->type('date')->ordering(true);
         $fields->name('to_date')->type('date')->ordering(true);
@@ -69,7 +69,7 @@ class PayrollPayrun extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('pay_cal_id')->type('recordpicker')->table('hrm_payroll_pay_calendar')->group('w-1/2');
+        $fields->name('pay_cal_id')->type('recordpicker')->table(['hrm', 'payroll_pay_calenda'])->group('w-1/2');
         $fields->name('payment_date')->type('date')->group('w-1/2');
         $fields->name('from_date')->type('date')->group('w-1/2');
         $fields->name('to_date')->type('date')->group('w-1/2');
@@ -90,7 +90,7 @@ class PayrollPayrun extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('pay_cal_id')->type('recordpicker')->table('hrm_payroll_pay_calendar')->group('w-1/6');
+        $fields->name('pay_cal_id')->type('recordpicker')->table(['hrm', 'payroll_pay_calenda'])->group('w-1/6');
         $fields->name('payment_date')->type('date')->group('w-1/6');
         $fields->name('from_date')->type('date')->group('w-1/6');
         $fields->name('to_date')->type('date')->group('w-1/6');

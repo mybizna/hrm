@@ -47,7 +47,7 @@ class EmployeeHistory extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
         $fields->name('module')->type('text')->ordering(true);
         $fields->name('category')->type('text')->ordering(true);
         $fields->name('type')->type('text')->ordering(true);
@@ -69,7 +69,7 @@ class EmployeeHistory extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
         $fields->name('module')->type('text')->group('w-1/2');
         $fields->name('category')->type('text')->group('w-1/2');
         $fields->name('type')->type('text')->group('w-1/2');
@@ -91,7 +91,7 @@ class EmployeeHistory extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
         $fields->name('module')->type('text')->group('w-1/6');
         $fields->name('category')->type('text')->group('w-1/6');
         $fields->name('type')->type('text')->group('w-1/6');

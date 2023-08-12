@@ -47,7 +47,7 @@ class HolidayIndv extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('holiday_id')->type('recordpicker')->table('hrm_holiday')->ordering(true);
+        $fields->name('holiday_id')->type('recordpicker')->table(['hrm', 'holiday'])->ordering(true);
         $fields->name('title')->type('text')->ordering(true);
         $fields->name('date')->type('date')->ordering(true);
 
@@ -65,7 +65,7 @@ class HolidayIndv extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('holiday_id')->type('recordpicker')->table('hrm_holiday')->group('w-1/2');
+        $fields->name('holiday_id')->type('recordpicker')->table(['hrm', 'holiday'])->group('w-1/2');
         $fields->name('title')->type('text')->group('w-1/2');
         $fields->name('date')->type('date')->group('w-1/2');
 
@@ -83,7 +83,7 @@ class HolidayIndv extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('holiday_id')->type('recordpicker')->table('hrm_holiday')->group('w-1/6');
+        $fields->name('holiday_id')->type('recordpicker')->table(['hrm', 'holiday'])->group('w-1/6');
         $fields->name('title')->type('text')->group('w-1/6');
         $fields->name('date')->type('date')->group('w-1/6');
 

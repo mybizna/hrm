@@ -51,16 +51,16 @@ class Employee extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->ordering(true);
         $fields->name('employee_id')->type('text')->ordering(true);
-        $fields->name('designation')->type('recordpicker')->table('hrm_designation')->ordering(true);
-        $fields->name('department')->type('recordpicker')->table('hrm_department')->ordering(true);
-        $fields->name('location')->type('recordpicker')->table('hrm_location')->ordering(true);
+        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->ordering(true);
+        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->ordering(true);
+        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->ordering(true);
         $fields->name('hiring_source')->type('text')->ordering(true);
         $fields->name('hiring_date')->type('date')->ordering(true);
         $fields->name('termination_date')->type('date')->ordering(true);
         $fields->name('date_of_birth')->type('date')->ordering(true);
-        $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->ordering(true);
+        $fields->name('reporting_to')->type('recordpicker')->table(['hrm', 'employee'])->ordering(true);
         $fields->name('pay_rate')->type('text')->ordering(true);
         $fields->name('pay_type')->type('text')->ordering(true);
         $fields->name('type')->type('text')->ordering(true);
@@ -80,16 +80,16 @@ class Employee extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/2');
         $fields->name('employee_id')->type('text')->group('w-1/2');
-        $fields->name('designation')->type('recordpicker')->table('hrm_designation')->group('w-1/2');
-        $fields->name('department')->type('recordpicker')->table('hrm_department')->group('w-1/2');
-        $fields->name('location')->type('recordpicker')->table('hrm_location')->group('w-1/2');
+        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->group('w-1/2');
+        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->group('w-1/2');
+        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->group('w-1/2');
         $fields->name('hiring_source')->type('text')->group('w-1/2');
         $fields->name('hiring_date')->type('date')->group('w-1/2');
         $fields->name('termination_date')->type('date')->group('w-1/2');
         $fields->name('date_of_birth')->type('date')->group('w-1/2');
-        $fields->name('reporting_to')->type('recordpicker')->table('hrm_employee')->group('w-1/2');
+        $fields->name('reporting_to')->type('recordpicker')->table(['hrm', 'employee'])->group('w-1/2');
         $fields->name('pay_rate')->type('text')->group('w-1/2');
         $fields->name('pay_type')->type('text')->group('w-1/2');
         $fields->name('type')->type('text')->group('w-1/2');
@@ -109,11 +109,11 @@ class Employee extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/6');
         $fields->name('employee_id')->type('text')->group('w-1/6');
-        $fields->name('designation')->type('recordpicker')->table('hrm_designation')->group('w-1/6');
-        $fields->name('department')->type('recordpicker')->table('hrm_department')->group('w-1/6');
-        $fields->name('location')->type('recordpicker')->table('hrm_location')->group('w-1/6');
+        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->group('w-1/6');
+        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->group('w-1/6');
+        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->group('w-1/6');
 
         return $fields;
 

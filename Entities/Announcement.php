@@ -46,7 +46,7 @@ class Announcement extends BaseModel
         // listing view fields
         $fields = new ListTable();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->ordering(true);
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
         $fields->name('post_id')->type('text')->ordering(true);
         $fields->name('status')->type('switch')->ordering(true);
         $fields->name('email_status')->type('switch')->ordering(true);
@@ -65,7 +65,7 @@ class Announcement extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/2');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
         $fields->name('post_id')->type('text')->group('w-1/2');
         $fields->name('status')->type('switch')->group('w-1/2');
         $fields->name('email_status')->type('switch')->group('w-1/2');
@@ -84,7 +84,7 @@ class Announcement extends BaseModel
         // listing view fields
         $fields = new FormBuilder();
 
-        $fields->name('user_id')->type('recordpicker')->table('users')->group('w-1/6');
+        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
         $fields->name('post_id')->type('text')->group('w-1/6');
         $fields->name('status')->type('switch')->group('w-1/6');
         $fields->name('email_status')->type('switch')->group('w-1/6');
