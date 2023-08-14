@@ -3,8 +3,6 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class LeaveRequest extends BaseModel
@@ -41,92 +39,25 @@ class LeaveRequest extends BaseModel
     protected $table = "leave_request";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->ordering(true);
-        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->ordering(true);
-        $fields->name('leave_entitlement_id')->type('recordpicker')->table(['hrm', 'leave_entitlement'])->ordering(true);
-        $fields->name('day_status_id')->type('recordpicker')->table(['hrm', 'day_status'])->ordering(true);
-        $fields->name('days')->type('number')->ordering(true);
-        $fields->name('start_date')->type('datetime')->ordering(true);
-        $fields->name('end_date')->type('datetime')->ordering(true);
-        $fields->name('reason')->type('textarea')->ordering(true);
-        $fields->name('last_status')->type('number')->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/2');
-        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/2');
-        $fields->name('leave_entitlement_id')->type('recordpicker')->table(['hrm', 'leave_entitlement'])->group('w-1/2');
-        $fields->name('day_status_id')->type('recordpicker')->table(['hrm', 'day_status'])->group('w-1/2');
-        $fields->name('days')->type('number')->group('w-1/2');
-        $fields->name('start_date')->type('datetime')->group('w-1/2');
-        $fields->name('end_date')->type('datetime')->group('w-1/2');
-        $fields->name('reason')->type('textarea')->group('w-full');
-        $fields->name('last_status')->type('number')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('recordpicker')->table([ 'users'])->group('w-1/6');
-        $fields->name('leave_id')->type('recordpicker')->table(['hrm', 'leave'])->group('w-1/6');
-        $fields->name('leave_entitlement_id')->type('recordpicker')->table(['hrm', 'leave_entitlement'])->group('w-1/6');
-        $fields->name('day_status_id')->type('recordpicker')->table(['hrm', 'day_status'])->group('w-1/6');
-        $fields->name('days')->type('number')->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->bigIncrements('id');
-        $table->unsignedBigInteger('user_id')->index('user_id');
-        $table->unsignedSmallInteger('leave_id');
-        $table->unsignedBigInteger('leave_entitlement_id')->default(0)->index('leave_entitlement_id');
-        $table->unsignedSmallInteger('day_status_id')->default(1);
-        $table->unsignedDecimal('days', 5, 1)->default(0.0);
-        $table->integer('start_date');
-        $table->integer('end_date');
-        $table->text('reason')->nullable();
-        $table->unsignedSmallInteger('last_status')->default(2)->index('last_status');
+        $this->fields->bigIncrements('id')->html('text');
+        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedSmallInteger('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
+        $this->fields->unsignedBigInteger('leave_entitlement_id')->default(0)->index('leave_entitlement_id')->html('recordpicker')->table(['hrm', 'leave_entitlement']);
+        $this->fields->unsignedSmallInteger('day_status_id')->default(1)->html('recordpicker')->table(['hrm', 'day_status']);
+        $this->fields->unsignedDecimal('days', 5, 1)->default(0.0)->html('number');
+        $this->fields->integer('start_date')->html('datetime');
+        $this->fields->integer('end_date')->html('datetime');
+        $this->fields->text('reason')->nullable()->html('textarea');
+        $this->fields->unsignedSmallInteger('last_status')->default(2)->index('last_status')->html('number');
 
-        $table->index(['user_id', 'leave_id'], 'user_leave');
-        $table->index(['user_id', 'leave_entitlement_id'], 'user_entitlement');
+        $this->fields->index(['user_id', 'leave_id'], 'user_leave');
+        $this->fields->index(['user_id', 'leave_entitlement_id'], 'user_entitlement');
     }
 }

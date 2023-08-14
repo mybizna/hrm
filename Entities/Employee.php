@@ -3,8 +3,6 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Employee extends BaseModel
@@ -42,104 +40,27 @@ class Employee extends BaseModel
     protected $table = "hrm_employee";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('user_id')->type('recordpicker')->table(['users'])->ordering(true);
-        $fields->name('employee_id')->type('text')->ordering(true);
-        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->ordering(true);
-        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->ordering(true);
-        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->ordering(true);
-        $fields->name('hiring_source')->type('text')->ordering(true);
-        $fields->name('hiring_date')->type('date')->ordering(true);
-        $fields->name('termination_date')->type('date')->ordering(true);
-        $fields->name('date_of_birth')->type('date')->ordering(true);
-        $fields->name('reporting_to')->type('recordpicker')->table(['hrm', 'employee'])->ordering(true);
-        $fields->name('pay_rate')->type('text')->ordering(true);
-        $fields->name('pay_type')->type('text')->ordering(true);
-        $fields->name('type')->type('text')->ordering(true);
-        $fields->name('status')->type('switch')->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/2');
-        $fields->name('employee_id')->type('text')->group('w-1/2');
-        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->group('w-1/2');
-        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->group('w-1/2');
-        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->group('w-1/2');
-        $fields->name('hiring_source')->type('text')->group('w-1/2');
-        $fields->name('hiring_date')->type('date')->group('w-1/2');
-        $fields->name('termination_date')->type('date')->group('w-1/2');
-        $fields->name('date_of_birth')->type('date')->group('w-1/2');
-        $fields->name('reporting_to')->type('recordpicker')->table(['hrm', 'employee'])->group('w-1/2');
-        $fields->name('pay_rate')->type('text')->group('w-1/2');
-        $fields->name('pay_type')->type('text')->group('w-1/2');
-        $fields->name('type')->type('text')->group('w-1/2');
-        $fields->name('status')->type('switch')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('recordpicker')->table(['users'])->group('w-1/6');
-        $fields->name('employee_id')->type('text')->group('w-1/6');
-        $fields->name('designation')->type('recordpicker')->table(['hrm', 'designation'])->group('w-1/6');
-        $fields->name('department')->type('recordpicker')->table(['hrm', 'department'])->group('w-1/6');
-        $fields->name('location')->type('recordpicker')->table(['hrm', 'location'])->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->bigIncrements('id');
-        $table->unsignedBigInteger('user_id')->default(0)->index('user_id');
-        $table->string('employee_id', 20)->nullable()->index('employee_id');
-        $table->unsignedInteger('designation')->default(0)->index('designation');
-        $table->unsignedInteger('department')->default(0)->index('department');
-        $table->unsignedInteger('location')->default(0);
-        $table->string('hiring_source', 20);
-        $table->date('hiring_date');
-        $table->date('termination_date');
-        $table->date('date_of_birth');
-        $table->unsignedBigInteger('reporting_to')->default(0);
-        $table->unsignedDecimal('pay_rate', 20, 2)->default(0.00);
-        $table->string('pay_type', 20)->default('');
-        $table->string('type', 20);
-        $table->string('status', 10)->default('')->index('status');
+        $this->fields->bigIncrements('id');
+        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->string('employee_id', 20)->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedInteger('designation')->default(0)->index('designation')->html('recordpicker')->table(['hrm', 'designation']);
+        $this->fields->unsignedInteger('department')->default(0)->index('department')->html('recordpicker')->table(['hrm', 'department']);
+        $this->fields->unsignedInteger('location')->default(0)->html('recordpicker')->table(['hrm', 'location']);
+        $this->fields->string('hiring_source', 20)->html('text');
+        $this->fields->date('hiring_date')->html('date');
+        $this->fields->date('termination_date')->html('date');
+        $this->fields->date('date_of_birth')->html('date');
+        $this->fields->unsignedBigInteger('reporting_to')->default(0)->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedDecimal('pay_rate', 20, 2)->default(0.00)->html('amount');
+        $this->fields->string('pay_type', 20)->default('')->html('text');
+        $this->fields->string('type', 20)->html('text');
+        $this->fields->string('status', 10)->default('')->index('status')->html('switch');
     }
 }

@@ -3,8 +3,6 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Education extends BaseModel
@@ -41,84 +39,23 @@ class Education extends BaseModel
     protected $table = "hrm_education";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->ordering(true);
-        $fields->name('school')->type('text')->ordering(true);
-        $fields->name('degree')->type('text')->ordering(true);
-        $fields->name('field')->type('text')->ordering(true);
-        $fields->name('result')->type('text')->ordering(true);
-        $fields->name('result_type')->type('text')->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/2');
-        $fields->name('school')->type('text')->group('w-1/2');
-        $fields->name('degree')->type('text')->group('w-1/2');
-        $fields->name('field')->type('text')->group('w-1/2');
-        $fields->name('result')->type('text')->group('w-1/2');
-        $fields->name('result_type')->type('text')->group('w-1/2');
-        $fields->name('finished')->type('text')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/6');
-        $fields->name('school')->type('text')->group('w-1/6');
-        $fields->name('degree')->type('text')->group('w-1/6');
-        $fields->name('field')->type('text')->group('w-1/6');
-        $fields->name('result')->type('text')->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->increments('id');
-        $table->unsignedInteger('employee_id')->nullable()->index('employee_id');
-        $table->string('school', 100)->nullable();
-        $table->string('degree', 100)->nullable();
-        $table->string('field', 100)->nullable();
-        $table->string('result', 50)->nullable();
-        $table->enum('result_type', ['grade', 'percentage'])->nullable();
-        $table->unsignedInteger('finished')->nullable();
-        $table->text('notes')->nullable();
-        $table->text('interest')->nullable();
+        $this->fields->increments('id');
+        $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->string('school', 100)->nullable()->html('text');
+        $this->fields->string('degree', 100)->nullable->html('text');
+        $this->fields->string('field', 100)->nullable()->html('text');
+        $this->fields->string('result', 50)->nullable()->html('text');
+        $this->fields->enum('result_type', ['grade', 'percentage'])->nullable()->html('switch');
+        $this->fields->unsignedInteger('finished')->nullable()->html('switch');
+        $this->fields->text('notes')->nullable()->html('textarea');
+        $this->fields->text('interest')->nullable()->html('switch');
     }
+
 }

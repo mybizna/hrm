@@ -3,8 +3,6 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class Dependent extends BaseModel
@@ -39,73 +37,17 @@ class Dependent extends BaseModel
     protected $table = "hrm_dependent";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->ordering(true);
-        $fields->name('name')->type('text')->ordering(true);
-        $fields->name('relation')->type('text')->ordering(true);
-        $fields->name('dob')->type('text')->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/2');
-        $fields->name('name')->type('text')->group('w-1/2');
-        $fields->name('relation')->type('text')->group('w-1/2');
-        $fields->name('dob')->type('text')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('employee_id')->type('recordpicker')->table([ 'hrm', 'employee'])->group('w-1/6');
-        $fields->name('name')->type('text')->group('w-1/6');
-        $fields->name('relation')->type('text')->group('w-1/6');
-        $fields->name('dob')->type('text')->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
-        $table->increments('id');
-        $table->integer('employee_id')->nullable()->index('employee_id');
-        $table->string('name', 100)->nullable();
-        $table->string('relation', 100)->nullable();
-        $table->date('dob')->nullable();
+        $this->fields->increments('id')->html('text');
+        $this->fields->integer('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->string('name', 100)->nullable()->html('text');
+        $this->fields->string('relation', 100)->nullable()->html('textarea');
+        $this->fields->date('dob')->nullable()->html('date');
     }
 }

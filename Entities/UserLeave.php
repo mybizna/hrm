@@ -3,8 +3,6 @@
 namespace Modules\Hrm\Entities;
 
 use Illuminate\Database\Schema\Blueprint;
-use Modules\Base\Classes\Views\FormBuilder;
-use Modules\Base\Classes\Views\ListTable;
 use Modules\Base\Entities\BaseModel;
 
 class UserLeave extends BaseModel
@@ -38,74 +36,18 @@ class UserLeave extends BaseModel
     protected $table = "hrm_user_leave";
 
     /**
-     * Function for defining list of fields in table view.
-     *
-     * @return ListTable
-     */
-    public function listTable(): ListTable
-    {
-        // listing view fields
-        $fields = new ListTable();
-
-        $fields->name('user_id')->type('number')->ordering(true);
-        $fields->name('request_id')->type('number')->ordering(true);
-        $fields->name('title')->type('text')->ordering(true);
-        $fields->name('date')->type('date')->ordering(true);
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in form view.
-     *
-     * @return FormBuilder
-     */
-    public function formBuilder(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('number')->group('w-1/2');
-        $fields->name('request_id')->type('number')->group('w-1/2');
-        $fields->name('title')->type('text')->group('w-1/2');
-        $fields->name('date')->type('date')->group('w-1/2');
-
-        return $fields;
-
-    }
-
-    /**
-     * Function for defining list of fields in filter view.
-     *
-     * @return FormBuilder
-     */
-    public function filter(): FormBuilder
-    {
-        // listing view fields
-        $fields = new FormBuilder();
-
-        $fields->name('user_id')->type('number')->group('w-1/6');
-        $fields->name('request_id')->type('number')->group('w-1/6');
-        $fields->name('title')->type('text')->group('w-1/6');
-        $fields->name('date')->type('date')->group('w-1/6');
-
-        return $fields;
-
-    }
-    /**
      * List of fields to be migrated to the datebase when creating or updating model during migration.
      *
      * @param Blueprint $table
      * @return void
      */
-    public function migration(Blueprint $table): void
+    public function fields(Blueprint $table): void
     {
 
-        $table->bigIncrements('id');
-        $table->integer('user_id')->nullable();
-        $table->integer('request_id')->nullable();
-        $table->string('title')->nullable();
-        $table->date('date')->nullable();
+        $this->fields->bigIncrements('id')->html('number');
+        $this->fields->integer('user_id')->nullable()->html('number');
+        $this->fields->integer('request_id')->nullable()->html('number');
+        $this->fields->string('title')->nullable()->html('text');
+        $this->fields->date('date')->nullable()->html('date');
     }
 }
