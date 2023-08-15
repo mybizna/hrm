@@ -46,6 +46,8 @@ class Education extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id');
         $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
         $this->fields->string('school', 100)->nullable()->html('text');

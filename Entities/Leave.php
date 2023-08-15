@@ -43,6 +43,8 @@ class Leave extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('text');
         $this->fields->string('name', 150)->html('text');
         $this->fields->text('description')->nullable()->html('textarea');

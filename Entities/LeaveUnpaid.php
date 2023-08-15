@@ -46,6 +46,8 @@ class LeaveUnpaid extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->bigIncrements('id')->html('number');
         $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);

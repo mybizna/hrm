@@ -44,6 +44,8 @@ class Dependent extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('text');
         $this->fields->integer('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
         $this->fields->string('name', 100)->nullable()->html('text');

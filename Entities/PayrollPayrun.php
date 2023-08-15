@@ -42,6 +42,8 @@ class PayrollPayrun extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('number');
         $this->fields->unsignedInteger('pay_cal_id')->html('recordpicker')->table(['hrm', 'payroll_pay_calendar']);
         $this->fields->date('payment_date')->nullable()->html('date');

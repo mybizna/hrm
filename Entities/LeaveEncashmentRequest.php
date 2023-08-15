@@ -46,6 +46,7 @@ class LeaveEncashmentRequest extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('text');
         $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->table(['users']);

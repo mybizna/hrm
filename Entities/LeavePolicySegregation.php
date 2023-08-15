@@ -46,6 +46,8 @@ class LeavePolicySegregation extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->bigIncrements('id');
         $this->fields->unsignedBigInteger('leave_policy_id')->index('leave_policy_id')->html('recordpicker')->table(['hrm', 'leave_policy']);
         $this->fields->unsignedTinyInteger('jan')->default(0)->html('number');

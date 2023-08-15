@@ -43,6 +43,8 @@ class Holiday extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->bigIncrements('id')->html('text');
         $this->fields->string('title', 200)->html('text');
         $this->fields->timestamp('start')->useCurrent()->html('date');

@@ -48,6 +48,8 @@ class EmployeePerformance extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('text');
         $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
         $this->fields->unsignedInteger('reporting_to')->nullable()->html('recordpicker')->table(['hrm', 'employee']);

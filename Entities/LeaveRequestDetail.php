@@ -46,6 +46,8 @@ class LeaveRequestDetail extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->bigIncrements('id')->html('number');
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
         $this->fields->unsignedBigInteger('leave_approval_status_id')->html('recordpicker')->table(['hrm', 'leave_approval_status']);

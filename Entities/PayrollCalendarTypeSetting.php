@@ -45,6 +45,8 @@ class PayrollCalendarTypeSetting extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('number');
         $this->fields->integer('pay_calendar_id')->html('recordpicker')->table(['hrm', 'payroll_calendar']);
         $this->fields->integer('cal_type')->default(0)->html('number');

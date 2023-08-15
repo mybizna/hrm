@@ -43,6 +43,8 @@ class FinancialYear extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->increments('id')->html('text');
         $this->fields->string('fy_name')->nullable()->html('text');
         $this->fields->integer('start_date')->nullable()->index('start_date')->html('date');

@@ -47,6 +47,8 @@ class Employee extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
+        
         $this->fields->bigIncrements('id');
         $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
         $this->fields->string('employee_id', 20)->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);

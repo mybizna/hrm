@@ -43,6 +43,7 @@ class UserLeave extends BaseModel
      */
     public function fields(Blueprint $table): void
     {
+        $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('number');
         $this->fields->integer('user_id')->nullable()->html('number');
