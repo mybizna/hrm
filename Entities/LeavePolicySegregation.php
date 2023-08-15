@@ -14,7 +14,7 @@ class LeavePolicySegregation extends BaseModel
      */
     protected $fillable = [
         'leave_policy_id', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul',
-        'aug', 'sep', 'oct', 'nov', 'decem',
+        'aug', 'sep', 'oct', 'nov', 'dec',
     ];
 
     /**
@@ -44,10 +44,10 @@ class LeavePolicySegregation extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id');
         $this->fields->unsignedBigInteger('leave_policy_id')->index('leave_policy_id')->html('recordpicker')->table(['hrm', 'leave_policy']);
         $this->fields->unsignedTinyInteger('jan')->default(0)->html('number');
@@ -61,6 +61,19 @@ class LeavePolicySegregation extends BaseModel
         $this->fields->unsignedTinyInteger('sep')->default(0)->html('number');
         $this->fields->unsignedTinyInteger('oct')->default(0)->html('number');
         $this->fields->unsignedTinyInteger('nov')->default(0)->html('number');
-        $this->fields->unsignedTinyInteger('decem')->default(0)->html('number');
+        $this->fields->unsignedTinyInteger('dec')->default(0)->html('number');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['leave_policy_id', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'],
+            'filter' => ['leave_policy_id'],
+        ];
+
+        return $structure;
     }
 }

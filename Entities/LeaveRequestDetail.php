@@ -44,10 +44,10 @@ class LeaveRequestDetail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id')->html('number');
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
         $this->fields->unsignedBigInteger('leave_approval_status_id')->html('recordpicker')->table(['hrm', 'leave_approval_status']);
@@ -57,5 +57,18 @@ class LeaveRequestDetail extends BaseModel
         $this->fields->integer('leave_date')->html('date');
 
         $this->fields->index(['user_id', 'f_year', 'leave_date'], 'user_fyear_leave');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id', 'f_year', 'leave_date'],
+            'filter' => ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id'],
+        ];
+
+        return $structure;
     }
 }

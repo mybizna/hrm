@@ -44,10 +44,10 @@ class PayrollPayrunDetail extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('number');
         $this->fields->unsignedInteger('payrun_id')->html('number');
         $this->fields->unsignedInteger('pay_cal_id')->html('number');
@@ -58,6 +58,19 @@ class PayrollPayrunDetail extends BaseModel
         $this->fields->integer('pay_item_add_or_deduct')->html('number');
         $this->fields->string('note')->nullable()->html('text');
         $this->fields->unsignedInteger('approve_status')->default(0)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['payrun_id', 'pay_cal_id', 'payment_date', 'empid', 'pay_item_id', 'pay_item_amount', 'approve_status'],
+            'filter' => ['payrun_id', 'pay_cal_id', 'payment_date', 'empid', 'pay_item_id', 'pay_item_amount'],
+        ];
+
+        return $structure;
     }
 
 }

@@ -40,7 +40,7 @@ class PayrollPayrun extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -51,6 +51,19 @@ class PayrollPayrun extends BaseModel
         $this->fields->date('to_date')->nullable()->html('date');
         $this->fields->unsignedInteger('approve_status')->default(0)->html('switch');
         $this->fields->unsignedInteger('jr_tran_id')->default(0)->html('number');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
+            'filter' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
+        ];
+
+        return $structure;
     }
 
 }

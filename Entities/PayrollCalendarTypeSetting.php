@@ -43,15 +43,28 @@ class PayrollCalendarTypeSetting extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('number');
         $this->fields->integer('pay_calendar_id')->html('recordpicker')->table(['hrm', 'payroll_calendar']);
         $this->fields->integer('cal_type')->default(0)->html('number');
         $this->fields->integer('pay_day')->default(0)->html('number');
         $this->fields->integer('custom_month_day')->default(0)->html('number');
         $this->fields->integer('pay_day_mode')->default(0)->html('number');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['pay_calendar_id', 'cal_type', 'pay_day', 'custom_month_day', 'pay_day_mode'],
+            'filter' => ['pay_calendar_id', 'cal_type', 'pay_day'],
+        ];
+
+        return $structure;
     }
 }

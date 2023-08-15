@@ -41,12 +41,13 @@ class PayrollPayCalendar extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('pay_calendar_name', 64)->nullable()->html('text');
         $this->fields->string('pay_calendar_type', 16)->html('text');
     }
+
 }

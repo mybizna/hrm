@@ -46,10 +46,10 @@ class EmployeePerformance extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
         $this->fields->unsignedInteger('reporting_to')->nullable()->html('recordpicker')->table(['hrm', 'employee']);
@@ -67,6 +67,19 @@ class EmployeePerformance extends BaseModel
         $this->fields->text('supervisor_assessment')->nullable()->html('textarea');
         $this->fields->text('type')->nullable()->html('text');
         $this->fields->dateTime('performance_date')->nullable()->html('date');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'type', 'performance_date'],
+            'filter' => ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'performance_date'],
+        ];
+
+        return $structure;
     }
 
 }

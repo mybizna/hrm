@@ -44,7 +44,7 @@ class LeaveEncashmentRequest extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
@@ -58,6 +58,19 @@ class LeaveEncashmentRequest extends BaseModel
         $this->fields->decimal('amount', 20, 2)->default(0.00)->html('number');
         $this->fields->decimal('total', 20, 2)->default(0.00)->html('number');
         $this->fields->unsignedSmallInteger('f_year')->index('f_year')->html('number');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'],
+            'filter' => ['user_id', 'leave_id', 'approved_by', 'approval_status_id'],
+        ];
+
+        return $structure;
     }
 
 }

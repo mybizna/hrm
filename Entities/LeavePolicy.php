@@ -46,7 +46,7 @@ class LeavePolicy extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
@@ -73,6 +73,19 @@ class LeavePolicy extends BaseModel
         $this->fields->decimal('accrued_amount', 10, 2)->default(0.00)->html('amount');
         $this->fields->unsignedSmallInteger('accrued_max_days')->default(0)->html('number');
         $this->fields->unsignedTinyInteger('halfday_enable')->default(0)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['leave_id', 'days', 'apply_limit', 'employee_type', 'department_id', 'location_id', 'designation_id', 'halfday_enable'],
+            'filter' => ['department_id', 'location_id', 'designation_id'],
+        ];
+
+        return $structure;
     }
 
 }

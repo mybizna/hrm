@@ -41,10 +41,10 @@ class EmployeeHistory extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
         $this->fields->string('module', 20)->nullable()->index('module')->html('text');
@@ -53,5 +53,18 @@ class EmployeeHistory extends BaseModel
         $this->fields->text('comment')->nullable()->html('text');
         $this->fields->longText('data')->nullable()->html('text');
         $this->fields->dateTime('date')->html('date');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['user_id', 'module', 'category', 'type', 'date'],
+            'filter' => ['user_id', 'module', 'category', 'type', 'date'],
+        ];
+
+        return $structure;
     }
 }

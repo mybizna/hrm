@@ -44,10 +44,10 @@ class LeaveUnpaid extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id')->html('number');
         $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
@@ -57,6 +57,19 @@ class LeaveUnpaid extends BaseModel
         $this->fields->decimal('amount', 20, 2)->default(0.00)->html('number');
         $this->fields->decimal('total', 20, 2)->default(0.00)->html('number');
         $this->fields->unsignedSmallInteger('f_year')->index('f_year')->html('number');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id', 'days', 'amount', 'total', 'f_year'],
+            'filter' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id'],
+        ];
+
+        return $structure;
     }
 
 }

@@ -45,10 +45,10 @@ class Employee extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id');
         $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
         $this->fields->string('employee_id', 20)->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
@@ -64,5 +64,18 @@ class Employee extends BaseModel
         $this->fields->string('pay_type', 20)->default('')->html('text');
         $this->fields->string('type', 20)->html('text');
         $this->fields->string('status', 10)->default('')->index('status')->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['user_id', 'employee_id', 'designation', 'department', 'location', 'termination_date', 'date_of_birth', 'status'],
+            'filter' => ['user_id', 'employee_id', 'designation', 'department', 'location', 'status'],
+        ];
+
+        return $structure;
     }
 }

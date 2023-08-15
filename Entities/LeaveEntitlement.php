@@ -43,7 +43,7 @@ class LeaveEntitlement extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
@@ -58,6 +58,19 @@ class LeaveEntitlement extends BaseModel
         $this->fields->smallInteger('f_year')->html('number');
 
         $this->fields->index(['user_id', 'leave_id', 'f_year', 'trn_type'], 'comp_key_1');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year',],
+            'filter' => ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year',],
+        ];
+
+        return $structure;
     }
 
 }

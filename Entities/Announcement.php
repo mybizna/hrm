@@ -40,7 +40,7 @@ class Announcement extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -49,5 +49,18 @@ class Announcement extends BaseModel
         $this->fields->bigInteger('post_id')->index('post_id')->html('text');
         $this->fields->string('status', 30)->index('status')->html('switch');
         $this->fields->string('email_status', 30)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['user_id', 'post_id', 'status', 'email_status'],
+            'filter' => ['user_id', 'post_id', 'status', 'email_status'],
+        ];
+
+        return $structure;
     }
 }

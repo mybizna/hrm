@@ -43,10 +43,10 @@ class PayrollAdditionalAllowanceDeduction extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('number');
         $this->fields->integer('pay_item_id')->html('recordpicker')->table(['hrm', 'payroll_additional_allowance_deduction']);
         $this->fields->decimal('pay_item_amount', 10, 2)->html('number');
@@ -54,5 +54,18 @@ class PayrollAdditionalAllowanceDeduction extends BaseModel
         $this->fields->integer('pay_item_add_or_deduct')->html('number');
         $this->fields->integer('payrun_id')->html('number');
         $this->fields->string('note')->nullable()->html('text');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id', 'note'],
+            'filter' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id'],
+        ];
+
+        return $structure;
     }
 }

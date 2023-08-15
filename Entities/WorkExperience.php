@@ -40,7 +40,7 @@ class WorkExperience extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
@@ -51,6 +51,19 @@ class WorkExperience extends BaseModel
         $this->fields->date('from')->nullable()->html('date');
         $this->fields->date('to')->nullable()->html('date');
         $this->fields->text('description')->nullable()->html('textarea');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['employee_id', 'company_name', 'job_title', 'from', 'to'],
+            'filter' => ['employee_id', 'company_name', 'job_title',],
+        ];
+
+        return $structure;
     }
 
 }

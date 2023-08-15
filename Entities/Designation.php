@@ -41,14 +41,27 @@ class Designation extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('title', 200)->default('')->html('text');
         $this->fields->string('slug')->nullable()->html('text');
         $this->fields->text('description')->nullable()->html('textarea');
         $this->fields->boolean('status')->default(1)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['title', 'slug', 'status'],
+            'filter' => ['title', 'slug', 'status'],
+        ];
+
+        return $structure;
     }
 }

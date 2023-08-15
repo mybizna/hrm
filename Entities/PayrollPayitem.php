@@ -41,14 +41,27 @@ class PayrollPayitem extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('type')->html('text');
         $this->fields->string('payitem')->html('text');
         $this->fields->string('slug')->html('text');
         $this->fields->integer('pay_item_add_or_deduct')->html('text');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['type', 'payitem', 'slug', 'pay_item_add_or_deduct'],
+            'filter' => ['type', 'payitem', 'slug'],
+        ];
+
+        return $structure;
     }
 }

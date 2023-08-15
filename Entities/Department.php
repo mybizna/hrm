@@ -41,10 +41,10 @@ class Department extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('title', 200)->default('')->html('text');
         $this->fields->string('slug')->nullable()->html('text');
@@ -52,6 +52,19 @@ class Department extends BaseModel
         $this->fields->unsignedInteger('lead')->default(0)->html('switch');
         $this->fields->unsignedInteger('parent')->default(0)->html('switch');
         $this->fields->unsignedTinyInteger('status')->default(1)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['title', 'slug', 'lead', 'parent', 'status'],
+            'filter' => ['title', 'slug', 'lead', 'status'],
+        ];
+
+        return $structure;
     }
 
 }

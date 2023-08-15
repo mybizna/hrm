@@ -41,12 +41,25 @@ class Leave extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('text');
         $this->fields->string('name', 150)->html('text');
         $this->fields->text('description')->nullable()->html('textarea');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['name'],
+            'filter' => ['name'],
+        ];
+
+        return $structure;
     }
 }

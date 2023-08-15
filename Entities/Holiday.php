@@ -41,7 +41,7 @@ class Holiday extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
         
@@ -51,5 +51,18 @@ class Holiday extends BaseModel
         $this->fields->timestamp('end')->nullable()->default(null->html('date'));
         $this->fields->text('description')->html('textarea');
         $this->fields->string('range_status', 5)->html('switch');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['title', 'start', 'end', 'range_status'],
+            'filter' => ['title', 'start', 'end', 'range_status'],
+        ];
+
+        return $structure;
     }
 }

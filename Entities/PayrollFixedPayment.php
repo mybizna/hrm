@@ -43,7 +43,7 @@ class PayrollFixedPayment extends BaseModel
      * @param Blueprint $table
      * @return void
      */
-    public function fields(Blueprint $table): void
+    public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
@@ -53,5 +53,18 @@ class PayrollFixedPayment extends BaseModel
         $this->fields->integer('empid')->html('number');
         $this->fields->integer('pay_item_add_or_deduct')->html('number');
         $this->fields->string('note')->nullable()->html('text');
+    }
+
+    /**
+     * List of structure for this model.
+     */
+    public function structure($structure): array
+    {
+        $structure = [
+            'table' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'],
+            'filter' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'],
+        ];
+
+        return $structure;
     }
 }
