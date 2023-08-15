@@ -48,7 +48,7 @@ class PayrollCalendarTypeSetting extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->increments('id')->html('number');
-        $this->fields->integer('pay_calendar_id')->html('recordpicker')->table(['hrm', 'payroll_calendar']);
+        $this->fields->integer('pay_calendar_id')->html('recordpicker')->relation(['hrm', 'payroll_calendar']);
         $this->fields->integer('cal_type')->default(0)->html('number');
         $this->fields->integer('pay_day')->default(0)->html('number');
         $this->fields->integer('custom_month_day')->default(0)->html('number');

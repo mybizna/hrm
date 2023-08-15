@@ -47,11 +47,13 @@ class LeaveEntitlement extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
+        $trn_types = ['leave_policies'=>'Leave Policies', 'leave_approval_status'=>'Leave Approval Status', 'leave_encashment_requests'=>'Leave Encashment Requests', 'leave_entitlements'=>'Leave Entitlements', 'unpaid_leave'=>'Unpaid Leave', 'leave_encashment'=>'Leave Encashment', 'leave_carryforward'=>'Leave Carryforward', 'manual_leave_policies'=>'Manual Leave Policies', 'accounts'=>'Accounts', 'others'=>'Others', 'leave_accrual'=>'Leave Accrual', 'carry_forward_leave_expired'=>'Carry Forward Leave Expired'];
+
         $this->fields->bigIncrements('id');
-        $this->fields->unsignedBigInteger('user_id')->html('recordpicker')->table(['users']);
-        $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
+        $this->fields->unsignedBigInteger('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->relation(['hrm', 'leave']);
         $this->fields->unsignedBigInteger('trn_id')->index('trn_id')->html('number');
-        $this->fields->enum('trn_type', ['leave_policies', 'leave_approval_status', 'leave_encashment_requests', 'leave_entitlements', 'unpaid_leave', 'leave_encashment', 'leave_carryforward', 'manual_leave_policies', 'accounts', 'others', 'leave_accrual', 'carry_forward_leave_expired'])->default('leave_policies')->html('switch');
+        $this->fields->enum('trn_type', array_keys($trn_types))->options($trn_types)->default('leave_policies')->html('switch');
         $this->fields->unsignedDecimal('day_in', 5, 1)->default(0.0)->html('number');
         $this->fields->unsignedDecimal('day_out', 5, 1)->default(0.0)->html('number');
         $this->fields->text('description')->nullable()->html('textarea');
@@ -66,8 +68,8 @@ class LeaveEntitlement extends BaseModel
     public function structure($structure): array
     {
         $structure = [
-            'table' => ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year',],
-            'filter' => ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year',],
+            'table' => ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year'],
+            'filter' => ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year'],
         ];
 
         return $structure;

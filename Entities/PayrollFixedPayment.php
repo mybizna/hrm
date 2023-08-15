@@ -48,7 +48,7 @@ class PayrollFixedPayment extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->increments('id')->html('number');
-        $this->fields->integer('pay_item_id')->html('recordpicker')->table(['hrm', 'payroll_additional_allowance_deduction']);
+        $this->fields->integer('pay_item_id')->html('recordpicker')->relation(['hrm', 'payroll_additional_allowance_deduction']);
         $this->fields->decimal('pay_item_amount', 10, 2)->html('number');
         $this->fields->integer('empid')->html('number');
         $this->fields->integer('pay_item_add_or_deduct')->html('number');

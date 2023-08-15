@@ -46,7 +46,7 @@ class HolidayIndv extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
         
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->integer('holiday_id')->nullable()->html('recordpicker')->table(['hrm', 'holiday']);
+        $this->fields->integer('holiday_id')->nullable()->html('recordpicker')->relation(['hrm', 'holiday']);
         $this->fields->string('title')->nullable()->html('text');
         $this->fields->date('date')->nullable()->html('date');
     }

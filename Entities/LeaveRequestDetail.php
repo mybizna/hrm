@@ -49,10 +49,10 @@ class LeaveRequestDetail extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('number');
-        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
-        $this->fields->unsignedBigInteger('leave_approval_status_id')->html('recordpicker')->table(['hrm', 'leave_approval_status']);
+        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->relation(['hrm', 'leave_request']);
+        $this->fields->unsignedBigInteger('leave_approval_status_id')->html('recordpicker')->relation(['hrm', 'leave_approval_status']);
         $this->fields->unsignedTinyInteger('workingday_status')->default(1)->html('number');
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->smallInteger('f_year')->html('number');
         $this->fields->integer('leave_date')->html('date');
 

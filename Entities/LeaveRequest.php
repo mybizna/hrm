@@ -49,10 +49,10 @@ class LeaveRequest extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->table(['users']);
-        $this->fields->unsignedSmallInteger('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
-        $this->fields->unsignedBigInteger('leave_entitlement_id')->default(0)->index('leave_entitlement_id')->html('recordpicker')->table(['hrm', 'leave_entitlement']);
-        $this->fields->unsignedSmallInteger('day_status_id')->default(1)->html('recordpicker')->table(['hrm', 'day_status']);
+        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedSmallInteger('leave_id')->html('recordpicker')->relation(['hrm', 'leave']);
+        $this->fields->unsignedBigInteger('leave_entitlement_id')->default(0)->index('leave_entitlement_id')->html('recordpicker')->relation(['hrm', 'leave_entitlement']);
+        $this->fields->unsignedSmallInteger('day_status_id')->default(1)->html('recordpicker')->relation(['hrm', 'day_status']);
         $this->fields->unsignedDecimal('days', 5, 1)->default(0.0)->html('number');
         $this->fields->integer('start_date')->html('datetime');
         $this->fields->integer('end_date')->html('datetime');

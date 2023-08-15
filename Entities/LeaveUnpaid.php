@@ -49,10 +49,10 @@ class LeaveUnpaid extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('number');
-        $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->table(['hrm', 'leave']);
-        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
-        $this->fields->unsignedBigInteger('leave_approval_status_id')->index('leave_approval_status_id')->html('recordpicker')->table(['hrm', 'leave_approval_status']);
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->relation(['hrm', 'leave']);
+        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->relation(['hrm', 'leave_request']);
+        $this->fields->unsignedBigInteger('leave_approval_status_id')->index('leave_approval_status_id')->html('recordpicker')->relation(['hrm', 'leave_approval_status']);
+        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->unsignedDecimal('days', 4, 1)->default(0.0)->html('number');
         $this->fields->decimal('amount', 20, 2)->default(0.00)->html('number');
         $this->fields->decimal('total', 20, 2)->default(0.00)->html('number');

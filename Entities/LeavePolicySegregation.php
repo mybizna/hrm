@@ -49,7 +49,7 @@ class LeavePolicySegregation extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id');
-        $this->fields->unsignedBigInteger('leave_policy_id')->index('leave_policy_id')->html('recordpicker')->table(['hrm', 'leave_policy']);
+        $this->fields->unsignedBigInteger('leave_policy_id')->index('leave_policy_id')->html('recordpicker')->relation(['hrm', 'leave_policy']);
         $this->fields->unsignedTinyInteger('jan')->default(0)->html('number');
         $this->fields->unsignedTinyInteger('feb')->default(0)->html('number');
         $this->fields->unsignedTinyInteger('mar')->default(0)->html('number');

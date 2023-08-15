@@ -47,7 +47,7 @@ class PayrollPayCalendarEmployee extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->increments('id');
-        $this->fields->integer('pay_calendar_id')->html('recordpicker')->table(['hrm', 'payroll_pay_calenda']);
+        $this->fields->integer('pay_calendar_id')->html('recordpicker')->relation(['hrm', 'payroll_pay_calenda']);
         $this->fields->bigInteger('empid')->html('number');
     }
 

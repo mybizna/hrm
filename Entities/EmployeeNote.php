@@ -46,9 +46,9 @@ class EmployeeNote extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->default(0)->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('user_id')->default(0)->html('recordpicker')->relation(['users']);
         $this->fields->text('comment')->html('text');
-        $this->fields->unsignedBigInteger('comment_by')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('comment_by')->html('recordpicker')->relation(['users']);
     }
 
     /**

@@ -45,11 +45,14 @@ class EmployeeResignRequest extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
+        $statuses = ['pending' => 'Pending', 'approved' => 'Approved', 'rejected' => 'Rejected'];
+        $statuses_color = ['pending' => 'gray', 'approved' => 'green', 'rejected' => 'red'];
+
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->string('reason')->nullable()->html('textarea');
         $this->fields->date('date')->html('date');
-        $this->fields->enum('status', ['pending', 'approved', 'rejected'])->default('pending')->html('switch');
+        $this->fields->enum('status',  array_keys($statuses))->options($statuses)->color($statuses_color)->default('pending')->html('switch');
     }
 
     /**

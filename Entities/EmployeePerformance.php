@@ -51,19 +51,19 @@ class EmployeePerformance extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->increments('id')->html('text');
-        $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
-        $this->fields->unsignedInteger('reporting_to')->nullable()->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->relation(['hrm', 'employee']);
+        $this->fields->unsignedInteger('reporting_to')->nullable()->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->string('job_knowledge', 100)->nullable()->html('text');
         $this->fields->string('work_quality', 100)->nullable()->html('text');
         $this->fields->string('attendance', 100)->nullable()->html('text');
         $this->fields->string('communication', 100)->nullable()->html('text');
         $this->fields->string('dependablity', 100)->nullable()->html('text');
-        $this->fields->unsignedInteger('reviewer')->nullable()->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedInteger('reviewer')->nullable()->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->text('comments')->nullable()->html('text');
         $this->fields->dateTime('completion_date')->nullable()->html('date');
         $this->fields->text('goal_description')->nullable()->html('textarea');
         $this->fields->text('employee_assessment')->nullable()->html('textarea');
-        $this->fields->unsignedInteger('supervisor')->nullable()->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedInteger('supervisor')->nullable()->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->text('supervisor_assessment')->nullable()->html('textarea');
         $this->fields->text('type')->nullable()->html('text');
         $this->fields->dateTime('performance_date')->nullable()->html('date');

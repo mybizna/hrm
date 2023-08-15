@@ -49,9 +49,9 @@ class LeaveApprovalStatus extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
         
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->table(['hrm', 'leave_request']);
-        $this->fields->unsignedTinyInteger('approval_status_id')->default(0)->index('approval_status_id')->html('recordpicker')->table(['hrm', 'approval_status']);
-        $this->fields->unsignedBigInteger('approved_by')->nullable()->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->relation(['hrm', 'leave_request']);
+        $this->fields->unsignedTinyInteger('approval_status_id')->default(0)->index('approval_status_id')->html('recordpicker')->relation(['hrm', 'approval_status']);
+        $this->fields->unsignedBigInteger('approved_by')->nullable()->html('recordpicker')->relation(['users']);
         $this->fields->text('message')->nullable()->html('text');
     }
 

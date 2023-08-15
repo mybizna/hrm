@@ -47,7 +47,7 @@ class Dependent extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
         
         $this->fields->increments('id')->html('text');
-        $this->fields->integer('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->integer('employee_id')->nullable()->index('employee_id')->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->string('name', 100)->nullable()->html('text');
         $this->fields->string('relation', 100)->nullable()->html('textarea');
         $this->fields->date('dob')->nullable()->html('date');

@@ -50,16 +50,16 @@ class Employee extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id');
-        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
-        $this->fields->string('employee_id', 20)->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
-        $this->fields->unsignedInteger('designation')->default(0)->index('designation')->html('recordpicker')->table(['hrm', 'designation']);
-        $this->fields->unsignedInteger('department')->default(0)->index('department')->html('recordpicker')->table(['hrm', 'department']);
-        $this->fields->unsignedInteger('location')->default(0)->html('recordpicker')->table(['hrm', 'location']);
+        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->string('employee_id', 20)->nullable()->index('employee_id')->html('recordpicker')->relation(['hrm', 'employee']);
+        $this->fields->unsignedInteger('designation')->default(0)->index('designation')->html('recordpicker')->relation(['hrm', 'designation']);
+        $this->fields->unsignedInteger('department')->default(0)->index('department')->html('recordpicker')->relation(['hrm', 'department']);
+        $this->fields->unsignedInteger('location')->default(0)->html('recordpicker')->relation(['hrm', 'location']);
         $this->fields->string('hiring_source', 20)->html('text');
         $this->fields->date('hiring_date')->html('date');
         $this->fields->date('termination_date')->html('date');
         $this->fields->date('date_of_birth')->html('date');
-        $this->fields->unsignedBigInteger('reporting_to')->default(0)->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedBigInteger('reporting_to')->default(0)->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->unsignedDecimal('pay_rate', 20, 2)->default(0.00)->html('amount');
         $this->fields->string('pay_type', 20)->default('')->html('text');
         $this->fields->string('type', 20)->html('text');

@@ -48,13 +48,15 @@ class Education extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
+        $result_types = ['grade' => 'Grade', 'percentage' => 'Percentage'];
+
         $this->fields->increments('id');
-        $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->table(['hrm', 'employee']);
+        $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->string('school', 100)->nullable()->html('text');
         $this->fields->string('degree', 100)->nullable->html('text');
         $this->fields->string('field', 100)->nullable()->html('text');
         $this->fields->string('result', 50)->nullable()->html('text');
-        $this->fields->enum('result_type', ['grade', 'percentage'])->nullable()->html('switch');
+        $this->fields->enum('result_type', array_keys($result_types))->options($result_types)->nullable()->html('switch');
         $this->fields->unsignedInteger('finished')->nullable()->html('switch');
         $this->fields->text('notes')->nullable()->html('textarea');
         $this->fields->text('interest')->nullable()->html('switch');

@@ -46,7 +46,7 @@ class EmployeeHistory extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->increments('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->table(['users']);
+        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->string('module', 20)->nullable()->index('module')->html('text');
         $this->fields->string('category', 20)->nullable()->html('text');
         $this->fields->string('type', 20)->nullable()->html('text');
