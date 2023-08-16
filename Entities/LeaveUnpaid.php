@@ -64,8 +64,14 @@ class LeaveUnpaid extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id', 'days', 'amount', 'total', 'f_year'],
+            'form' => [
+                ['label' => 'Leave', 'class' => 'w-full', 'fields' => ['leave_id']],
+                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['leave_request_id', 'leave_approval_status_id', 'user_id', 'days']],
+                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['amount', 'total', 'f_year']],
+            ],
             'filter' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id'],
         ];
 

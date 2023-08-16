@@ -64,8 +64,14 @@ class LeaveRequestDetail extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id', 'f_year', 'leave_date'],
+            'form' => [
+                ['label' => 'Leave Request', 'class' => 'w-full', 'fields' => ['leave_request_id']],
+                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['leave_approval_status_id', 'workingday_status', 'user_id']],
+                ['label' => 'Main', 'class' => 'w-/12', 'fields' => ['f_year', 'leave_date']],
+            ],
             'filter' => ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id'],
         ];
 

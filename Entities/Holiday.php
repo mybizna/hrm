@@ -44,7 +44,7 @@ class Holiday extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id')->html('text');
         $this->fields->string('title', 200)->html('text');
         $this->fields->timestamp('start')->useCurrent()->html('date');
@@ -60,6 +60,12 @@ class Holiday extends BaseModel
     {
         $structure = [
             'table' => ['title', 'start', 'end', 'range_status'],
+            'form' => [
+                ['label' => 'Title', 'class' => 'w-full', 'fields' => ['title']],
+                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
+                ['label' => 'Date', 'class' => 'w-1/2', 'fields' => ['start', 'end']],
+                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['range_status']],
+            ],
             'filter' => ['title', 'start', 'end', 'range_status'],
         ];
 

@@ -43,7 +43,7 @@ class PayrollPayrun extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->increments('id')->html('number');
         $this->fields->unsignedInteger('pay_cal_id')->html('recordpicker')->relation(['hrm', 'payroll_pay_calendar']);
         $this->fields->date('payment_date')->nullable()->html('date');
@@ -58,8 +58,14 @@ class PayrollPayrun extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
+            'form' => [
+                ['label' => 'Pay Cal', 'class' => 'w-full', 'fields' => ['pay_cal_id']],
+                ['label' => 'Payment', 'class' => 'w-1/2', 'fields' => ['payment_date', 'from_date', 'to_date']],
+                ['label' => 'Date', 'class' => 'w-1/2', 'fields' => ['approve_status', 'jr_tran_id']],
+            ],
             'filter' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
         ];
 

@@ -58,9 +58,16 @@ class WorkExperience extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['employee_id', 'company_name', 'job_title', 'from', 'to'],
-            'filter' => ['employee_id', 'company_name', 'job_title',],
+            'form' => [
+                ['label' => 'Job Title', 'class' => 'w-full', 'fields' => ['job_title']],
+                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['employee_id', 'company_name']],
+                ['label' => 'From - To', 'class' => 'w-1/2', 'fields' => ['from', 'to']],
+                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
+            ],
+            'filter' => ['employee_id', 'company_name', 'job_title'],
         ];
 
         return $structure;

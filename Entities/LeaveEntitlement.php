@@ -47,7 +47,7 @@ class LeaveEntitlement extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $trn_types = ['leave_policies'=>'Leave Policies', 'leave_approval_status'=>'Leave Approval Status', 'leave_encashment_requests'=>'Leave Encashment Requests', 'leave_entitlements'=>'Leave Entitlements', 'unpaid_leave'=>'Unpaid Leave', 'leave_encashment'=>'Leave Encashment', 'leave_carryforward'=>'Leave Carryforward', 'manual_leave_policies'=>'Manual Leave Policies', 'accounts'=>'Accounts', 'others'=>'Others', 'leave_accrual'=>'Leave Accrual', 'carry_forward_leave_expired'=>'Carry Forward Leave Expired'];
+        $trn_types = ['leave_policies' => 'Leave Policies', 'leave_approval_status' => 'Leave Approval Status', 'leave_encashment_requests' => 'Leave Encashment Requests', 'leave_entitlements' => 'Leave Entitlements', 'unpaid_leave' => 'Unpaid Leave', 'leave_encashment' => 'Leave Encashment', 'leave_carryforward' => 'Leave Carryforward', 'manual_leave_policies' => 'Manual Leave Policies', 'accounts' => 'Accounts', 'others' => 'Others', 'leave_accrual' => 'Leave Accrual', 'carry_forward_leave_expired' => 'Carry Forward Leave Expired'];
 
         $this->fields->bigIncrements('id');
         $this->fields->unsignedBigInteger('user_id')->html('recordpicker')->relation(['users']);
@@ -67,8 +67,15 @@ class LeaveEntitlement extends BaseModel
      */
     public function structure($structure): array
     {
+
         $structure = [
             'table' => ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year'],
+            'form' => [
+                ['label' => 'Leave', 'class' => 'w-full', 'fields' => ['leave_id']],
+                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
+                ['label' => 'Leave Entitlement', 'class' => 'w-1/2', 'fields' => ['user_id', 'trn_id', 'trn_type', 'f_year']],
+                ['label' => 'Day', 'class' => 'w-1/2', 'fields' => ['day_in', 'day_out']],
+            ],
             'filter' => ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year'],
         ];
 
