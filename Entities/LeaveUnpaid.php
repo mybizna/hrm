@@ -65,15 +65,13 @@ class LeaveUnpaid extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id', 'days', 'amount', 'total', 'f_year'],
-            'form' => [
-                ['label' => 'Leave', 'class' => 'w-full', 'fields' => ['leave_id']],
-                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['leave_request_id', 'leave_approval_status_id', 'user_id', 'days']],
-                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['amount', 'total', 'f_year']],
-            ],
-            'filter' => ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id'],
+        $structure['table'] = ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id', 'days', 'amount', 'total', 'f_year'];
+        $structure['form'] = [
+            ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
+            ['label' => 'Main', 'class' => 'col-span-6', 'fields' => ['leave_request_id', 'leave_approval_status_id', 'user_id', 'days']],
+            ['label' => 'Setting', 'class' => 'col-span-6', 'fields' => ['amount', 'total', 'f_year']],
         ];
+        $structure['filter'] = ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id'];
 
         return $structure;
     }

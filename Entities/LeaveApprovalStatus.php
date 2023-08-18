@@ -47,7 +47,7 @@ class LeaveApprovalStatus extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id')->html('text');
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->relation(['hrm', 'leave_request']);
         $this->fields->unsignedTinyInteger('approval_status_id')->default(0)->index('approval_status_id')->html('recordpicker')->relation(['hrm', 'approval_status']);
@@ -60,10 +60,8 @@ class LeaveApprovalStatus extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['leave_request_id', 'approval_status_id', 'approved_by', 'message'],
-            'filter' => ['leave_request_id', 'approval_status_id', 'approved_by'],
-        ];
+        $structure['table'] = ['leave_request_id', 'approval_status_id', 'approved_by', 'message'];
+        $structure['filter'] = ['leave_request_id', 'approval_status_id', 'approved_by'];
 
         return $structure;
     }

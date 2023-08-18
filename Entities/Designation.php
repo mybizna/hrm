@@ -57,10 +57,8 @@ class Designation extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['title', 'slug', 'status'],
-            'filter' => ['title', 'slug', 'status'],
-        ];
+        $structure['table'] = ['title', 'slug', 'status'];
+        $structure['filter'] = ['title', 'slug', 'status'];
 
         return $structure;
     }

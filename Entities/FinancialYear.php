@@ -59,10 +59,8 @@ class FinancialYear extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['fy_name', 'start_date', 'end_date'],
-            'filter' => ['fy_name', 'start_date', 'end_date'],
-        ];
+        $structure['table'] = ['fy_name', 'start_date', 'end_date'];
+        $structure['filter'] = ['fy_name', 'start_date', 'end_date'];
 
         return $structure;
     }

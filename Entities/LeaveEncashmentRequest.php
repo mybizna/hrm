@@ -66,15 +66,13 @@ class LeaveEncashmentRequest extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'],
-            'form' => [
-                ['label' => 'Leave', 'class' => 'w-full', 'fields' => ['leave_id']],
-                ['label' => 'Encashment', 'class' => 'w-full', 'fields' => ['user_id', 'approved_by', 'approval_status_id', 'encash_days']],
-                ['label' => 'setting', 'class' => 'w-full', 'fields' => ['forward_days', 'amount', 'total', 'f_year']],
-            ],
-            'filter' => ['user_id', 'leave_id', 'approved_by', 'approval_status_id'],
+        $structure['table'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'];
+        $structure['form'] = [
+            ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
+            ['label' => 'Encashment', 'class' => 'col-span-full', 'fields' => ['user_id', 'approved_by', 'approval_status_id', 'encash_days']],
+            ['label' => 'setting', 'class' => 'col-span-full', 'fields' => ['forward_days', 'amount', 'total', 'f_year']],
         ];
+        $structure['filter'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id'];
 
         return $structure;
     }

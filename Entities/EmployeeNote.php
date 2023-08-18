@@ -56,10 +56,8 @@ class EmployeeNote extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['user_id', 'comment', 'comment_by'],
-            'filter' => ['user_id', 'comment'],
-        ];
+        $structure['table'] = ['user_id', 'comment', 'comment_by'];
+        $structure['filter'] = ['user_id', 'comment'];
 
         return $structure;
     }

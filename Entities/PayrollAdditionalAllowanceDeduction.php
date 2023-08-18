@@ -62,16 +62,14 @@ class PayrollAdditionalAllowanceDeduction extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id', 'note'],
-            'form' => [
-                ['label' => 'Pay Item', 'class' => 'w-full', 'fields' => ['pay_item_id']],
-                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['pay_item_amount', 'empid']],
-                ['label' => 'Other', 'class' => 'w-1/2', 'fields' => ['pay_item_add_or_deduct', 'payrun_id']],
-                ['label' => 'Note', 'class' => 'w-full', 'fields' => ['note']],
-            ],
-            'filter' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id'],
+        $structure['table'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id', 'note'];
+        $structure['form'] = [
+            ['label' => 'Pay Item', 'class' => 'col-span-full', 'fields' => ['pay_item_id']],
+            ['label' => 'Main', 'class' => 'col-span-6', 'fields' => ['pay_item_amount', 'empid']],
+            ['label' => 'Other', 'class' => 'col-span-6', 'fields' => ['pay_item_add_or_deduct', 'payrun_id']],
+            ['label' => 'Note', 'class' => 'col-span-full', 'fields' => ['note']],
         ];
+        $structure['filter'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id'];
 
         return $structure;
     }

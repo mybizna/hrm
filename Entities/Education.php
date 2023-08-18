@@ -68,16 +68,14 @@ class Education extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['employee_id', 'school', 'degree', 'field', 'finished'],
-            'form' => [
-                ['label' => 'School', 'class' => 'w-full', 'fields' => ['school']],
-                ['label' => 'Employee', 'class' => 'w-1/6', 'fields' => ['employee_id', 'field', 'result']],
-                ['label' => 'Result', 'class' => 'w-1/6', 'fields' => ['result_type', 'finished']],
-                ['label' => 'Notes', 'class' => 'w-full', 'fields' => ['notes', 'interest']],
-            ],
-            'filter' => ['employee_id', 'school', 'degree', 'field', 'finished'],
+        $structure['table'] = ['employee_id', 'school', 'degree', 'field', 'finished'];
+        $structure['form'] = [
+            ['label' => 'School', 'class' => 'col-span-full', 'fields' => ['school']],
+            ['label' => 'Employee', 'class' => 'col-span-6', 'fields' => ['employee_id', 'field', 'result']],
+            ['label' => 'Result', 'class' => 'col-span-6', 'fields' => ['result_type', 'finished']],
+            ['label' => 'Notes', 'class' => 'col-span-full', 'fields' => ['notes', 'interest']],
         ];
+        $structure['filter'] = ['employee_id', 'school', 'degree', 'field', 'finished'];
 
         return $structure;
     }

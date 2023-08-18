@@ -43,7 +43,7 @@ class Announcement extends BaseModel
     public function fields(Blueprint $table = null): void
     {
         $this->fields = $table ?? new Blueprint($this->table);
-        
+
         $this->fields->bigIncrements('id'->html('text'));
         $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->bigInteger('post_id')->index('post_id')->html('text');
@@ -56,10 +56,8 @@ class Announcement extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['user_id', 'post_id', 'status', 'email_status'],
-            'filter' => ['user_id', 'post_id', 'status', 'email_status'],
-        ];
+        $structure['table'] = ['user_id', 'post_id', 'status', 'email_status'];
+        $structure['filter'] = ['user_id', 'post_id', 'status', 'email_status'];
 
         return $structure;
     }

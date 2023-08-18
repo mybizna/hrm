@@ -68,16 +68,14 @@ class LeaveEntitlement extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year'],
-            'form' => [
-                ['label' => 'Leave', 'class' => 'w-full', 'fields' => ['leave_id']],
-                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
-                ['label' => 'Leave Entitlement', 'class' => 'w-1/2', 'fields' => ['user_id', 'trn_id', 'trn_type', 'f_year']],
-                ['label' => 'Day', 'class' => 'w-1/2', 'fields' => ['day_in', 'day_out']],
-            ],
-            'filter' => ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year'],
+        $structure['table'] = ['user_id', 'leave_id', 'trn_id', 'trn_type', 'day_in', 'day_out', 'f_year'];
+        $structure['form'] = [
+            ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
+            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
+            ['label' => 'Leave Entitlement', 'class' => 'col-span-6', 'fields' => ['user_id', 'trn_id', 'trn_type', 'f_year']],
+            ['label' => 'Day', 'class' => 'col-span-6', 'fields' => ['day_in', 'day_out']],
         ];
+        $structure['filter'] = ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year'];
 
         return $structure;
     }

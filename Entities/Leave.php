@@ -55,10 +55,8 @@ class Leave extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['name'],
-            'filter' => ['name'],
-        ];
+        $structure['table'] = ['name'];
+        $structure['filter'] = ['name'];
 
         return $structure;
     }

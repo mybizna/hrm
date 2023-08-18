@@ -60,10 +60,8 @@ class EmployeeHistory extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['user_id', 'module', 'category', 'type', 'date'],
-            'filter' => ['user_id', 'module', 'category', 'type', 'date'],
-        ];
+        $structure['table'] = ['user_id', 'module', 'category', 'type', 'date'];
+        $structure['filter'] = ['user_id', 'module', 'category', 'type', 'date'];
 
         return $structure;
     }

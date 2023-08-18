@@ -58,16 +58,14 @@ class Holiday extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['title', 'start', 'end', 'range_status'],
-            'form' => [
-                ['label' => 'Title', 'class' => 'w-full', 'fields' => ['title']],
-                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
-                ['label' => 'Date', 'class' => 'w-1/2', 'fields' => ['start', 'end']],
-                ['label' => 'Setting', 'class' => 'w-1/2', 'fields' => ['range_status']],
-            ],
-            'filter' => ['title', 'start', 'end', 'range_status'],
+        $structure['table'] = ['title', 'start', 'end', 'range_status'];
+        $structure['form'] = [
+            ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
+            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
+            ['label' => 'Date', 'class' => 'col-span-6', 'fields' => ['start', 'end']],
+            ['label' => 'Setting', 'class' => 'col-span-6', 'fields' => ['range_status']],
         ];
+        $structure['filter'] = ['title', 'start', 'end', 'range_status'];
 
         return $structure;
     }

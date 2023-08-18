@@ -52,7 +52,7 @@ class EmployeeResignRequest extends BaseModel
         $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->string('reason')->nullable()->html('textarea');
         $this->fields->date('date')->html('date');
-        $this->fields->enum('status',  array_keys($statuses))->options($statuses)->color($statuses_color)->default('pending')->html('switch');
+        $this->fields->enum('status', array_keys($statuses))->options($statuses)->color($statuses_color)->default('pending')->html('switch');
     }
 
     /**
@@ -60,10 +60,8 @@ class EmployeeResignRequest extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['user_id', 'date', 'status'],
-            'filter' => ['user_id', 'date', 'status'],
-        ];
+        $structure['table'] = ['user_id', 'date', 'status'];
+        $structure['filter'] = ['user_id', 'date', 'status'];
 
         return $structure;
     }

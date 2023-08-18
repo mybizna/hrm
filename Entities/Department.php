@@ -59,16 +59,14 @@ class Department extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['title', 'slug', 'lead', 'parent', 'status'],
-            'form' => [
-                ['label' => 'Title', 'class' => 'w-full', 'fields' => ['title']],
-                ['label' => 'Description', 'class' => 'w-full', 'fields' => ['description']],
-                ['label' => 'Lead', 'class' => 'w-1/6', 'fields' => ['slug', 'lead']],
-                ['label' => 'Status', 'class' => 'w-1/6', 'fields' => ['parent', 'status']],
-            ],
-            'filter' => ['title', 'slug', 'lead', 'status'],
+        $structure['table'] = ['title', 'slug', 'lead', 'parent', 'status'];
+        $structure['form'] = [
+            ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
+            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
+            ['label' => 'Lead', 'class' => 'col-span-6', 'fields' => ['slug', 'lead']],
+            ['label' => 'Status', 'class' => 'col-span-6', 'fields' => ['parent', 'status']],
         ];
+        $structure['filter'] = ['title', 'slug', 'lead', 'status'];
 
         return $structure;
     }

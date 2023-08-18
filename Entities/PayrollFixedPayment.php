@@ -60,10 +60,8 @@ class PayrollFixedPayment extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'],
-            'filter' => ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'],
-        ];
+        $structure['table'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'];
+        $structure['filter'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct'];
 
         return $structure;
     }

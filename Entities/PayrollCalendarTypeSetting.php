@@ -61,15 +61,13 @@ class PayrollCalendarTypeSetting extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['pay_calendar_id', 'cal_type', 'pay_day', 'custom_month_day', 'pay_day_mode'],
-            'form' => [
-                ['label' => 'Pay Calendar', 'class' => 'w-full', 'fields' => ['pay_calendar_id']],
-                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['cal_type', 'pay_day']],
-                ['label' => 'Main', 'class' => 'w-1/2', 'fields' => ['custom_month_day', 'pay_day_mode']],
-            ],
-            'filter' => ['pay_calendar_id', 'cal_type', 'pay_day'],
+        $structure['table'] = ['pay_calendar_id', 'cal_type', 'pay_day', 'custom_month_day', 'pay_day_mode'];
+        $structure['form'] = [
+            ['label' => 'Pay Calendar', 'class' => 'col-span-full', 'fields' => ['pay_calendar_id']],
+            ['label' => 'Main', 'class' => 'col-span-6', 'fields' => ['cal_type', 'pay_day']],
+            ['label' => 'Main', 'class' => 'col-span-6', 'fields' => ['custom_month_day', 'pay_day_mode']],
         ];
+        $structure['filter'] = ['pay_calendar_id', 'cal_type', 'pay_day'];
 
         return $structure;
     }

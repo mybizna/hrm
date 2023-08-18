@@ -62,10 +62,8 @@ class EmployeeRemoteWorkRequest extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['user_id', 'start_date', 'end_date', 'days', 'status'],
-            'filter' => ['user_id', 'start_date', 'end_date', 'status'],
-        ];
+        $structure['table'] = ['user_id', 'start_date', 'end_date', 'days', 'status'];
+        $structure['filter'] = ['user_id', 'start_date', 'end_date', 'status'];
 
         return $structure;
     }

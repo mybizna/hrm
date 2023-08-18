@@ -57,10 +57,8 @@ class PayrollPayitem extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure = [
-            'table' => ['type', 'payitem', 'slug', 'pay_item_add_or_deduct'],
-            'filter' => ['type', 'payitem', 'slug'],
-        ];
+        $structure['table'] = ['type', 'payitem', 'slug', 'pay_item_add_or_deduct'];
+        $structure['filter'] = ['type', 'payitem', 'slug'];
 
         return $structure;
     }

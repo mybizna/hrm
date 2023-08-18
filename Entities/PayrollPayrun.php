@@ -59,15 +59,13 @@ class PayrollPayrun extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
-            'form' => [
-                ['label' => 'Pay Cal', 'class' => 'w-full', 'fields' => ['pay_cal_id']],
-                ['label' => 'Payment', 'class' => 'w-1/2', 'fields' => ['payment_date', 'from_date', 'to_date']],
-                ['label' => 'Date', 'class' => 'w-1/2', 'fields' => ['approve_status', 'jr_tran_id']],
-            ],
-            'filter' => ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'],
+        $structure['table'] = ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'];
+        $structure['form'] = [
+            ['label' => 'Pay Cal', 'class' => 'col-span-full', 'fields' => ['pay_cal_id']],
+            ['label' => 'Payment', 'class' => 'col-span-6', 'fields' => ['payment_date', 'from_date', 'to_date']],
+            ['label' => 'Date', 'class' => 'col-span-6', 'fields' => ['approve_status', 'jr_tran_id']],
         ];
+        $structure['filter'] = ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'];
 
         return $structure;
     }

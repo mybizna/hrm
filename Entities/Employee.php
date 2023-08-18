@@ -72,15 +72,13 @@ class Employee extends BaseModel
     public function structure($structure): array
     {
 
-        $structure = [
-            'table' => ['user_id', 'employee_id', 'designation', 'department', 'location', 'termination_date', 'date_of_birth', 'status'],
-            'form' => [
-                ['label' => 'Employee', 'class' => 'w-full', 'fields' => ['employee_id']],
-                ['label' => 'Seeting', 'class' => 'w-1/6', 'fields' => ['designation', 'department', 'location', 'hiring_source', 'termination_date', 'date_of_birth']],
-                ['label' => 'Seeting', 'class' => 'w-1/6', 'fields' => ['user_id', 'reporting_to', 'pay_rate', 'pay_type', 'type', 'status']],
-            ],
-            'filter' => ['user_id', 'employee_id', 'designation', 'department', 'location', 'status'],
+        $structure['table'] = ['user_id', 'employee_id', 'designation', 'department', 'location', 'termination_date', 'date_of_birth', 'status'];
+        $structure['form'] = [
+            ['label' => 'Employee', 'class' => 'col-span-full', 'fields' => ['employee_id']],
+            ['label' => 'Seeting', 'class' => 'col-span-6', 'fields' => ['designation', 'department', 'location', 'hiring_source', 'termination_date', 'date_of_birth']],
+            ['label' => 'Seeting', 'class' => 'col-span-6', 'fields' => ['user_id', 'reporting_to', 'pay_rate', 'pay_type', 'type', 'status']],
         ];
+        $structure['filter'] = ['user_id', 'employee_id', 'designation', 'department', 'location', 'status'];
 
         return $structure;
     }
