@@ -50,7 +50,7 @@ class EmployeePerformance extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->unsignedInteger('employee_id')->nullable()->index('employee_id')->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->unsignedInteger('reporting_to')->nullable()->html('recordpicker')->relation(['hrm', 'employee']);
         $this->fields->string('job_knowledge', 100)->nullable()->html('text');

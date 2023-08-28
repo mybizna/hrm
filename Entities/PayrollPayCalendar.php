@@ -45,7 +45,7 @@ class PayrollPayCalendar extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->increments('id')->html('text');
+        $this->fields->increments('id')->html('hidden');
         $this->fields->string('pay_calendar_name', 64)->nullable()->html('text');
         $this->fields->string('pay_calendar_type', 16)->html('text');
     }
