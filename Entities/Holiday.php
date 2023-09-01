@@ -48,7 +48,7 @@ class Holiday extends BaseModel
         $this->fields->bigIncrements('id')->html('text');
         $this->fields->string('title', 200)->html('text');
         $this->fields->timestamp('start')->useCurrent()->html('date');
-        $this->fields->timestamp('end')->nullable()->default(null->html('date'));
+        $this->fields->timestamp('end')->nullable()->default(null)->html('date');
         $this->fields->text('description')->html('textarea');
         $this->fields->string('range_status', 5)->html('switch');
     }

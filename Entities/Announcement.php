@@ -44,7 +44,7 @@ class Announcement extends BaseModel
     {
         $this->fields = $table ?? new Blueprint($this->table);
 
-        $this->fields->bigIncrements('id'->html('text'));
+        $this->fields->bigIncrements('id')->html('text');
         $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
         $this->fields->bigInteger('post_id')->index('post_id')->html('text');
         $this->fields->string('status', 30)->index('status')->html('switch');
