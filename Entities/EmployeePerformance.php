@@ -78,8 +78,8 @@ class EmployeePerformance extends BaseModel
         $structure['table'] = ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'type', 'performance_date'];
         $structure['form'] = [
             ['label' => 'Employee', 'class' => 'col-span-full', 'fields' => ['employee_id']],
-            ['label' => 'Details', 'class' => 'col-span-6', 'fields' => ['reporting_to', 'job_knowledge', 'work_quality', 'attendance', 'communication', 'dependablity', 'reviewer', 'comments', 'completion_date']],
-            ['label' => 'Others', 'class' => 'col-span-6', 'fields' => ['goal_description', 'employee_assessment', 'supervisor', 'supervisor_assessment', 'type', 'performance_date']],
+            ['label' => 'Details', 'class' => 'col-span-full md:col-span-6', 'fields' => ['reporting_to', 'job_knowledge', 'work_quality', 'attendance', 'communication', 'dependablity', 'reviewer', 'comments', 'completion_date']],
+            ['label' => 'Others', 'class' => 'col-span-full md:col-span-6', 'fields' => ['goal_description', 'employee_assessment', 'supervisor', 'supervisor_assessment', 'type', 'performance_date']],
         ];
         $structure['filter'] = ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'performance_date'];
 

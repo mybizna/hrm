@@ -72,9 +72,9 @@ class LeaveRequest extends BaseModel
         $structure['table'] = ['user_id', 'leave_id', 'leave_entitlement_id', 'day_status_id', 'days', 'start_date', 'end_date', 'last_status'];
         $structure['form'] = [
             ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
-            ['label' => 'Leave Request', 'class' => 'col-span-6', 'fields' => ['user_id', 'leave_entitlement_id', 'day_status_id']],
-            ['label' => 'Dates', 'class' => 'col-span-6', 'fields' => ['start_date', 'end_date']],
-            ['label' => 'Last Status', 'class' => 'col-span-6', 'fields' => ['last_status']],
+            ['label' => 'Leave Request', 'class' => 'col-span-full md:col-span-6', 'fields' => ['user_id', 'leave_entitlement_id', 'day_status_id']],
+            ['label' => 'Dates', 'class' => 'col-span-full md:col-span-6', 'fields' => ['start_date', 'end_date']],
+            ['label' => 'Last Status', 'class' => 'col-span-full md:col-span-6', 'fields' => ['last_status']],
             ['label' => 'Reason', 'class' => 'col-span-full', 'fields' => ['reason']],
         ];
         $structure['filter'] = ['user_id', 'leave_id', 'leave_entitlement_id', 'day_status_id'];

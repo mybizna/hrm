@@ -91,10 +91,10 @@ class LeavePolicy extends BaseModel
         $structure['form'] = [
             ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
             ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
-            ['label' => 'Leave Policy', 'class' => 'col-span-6', 'fields' => ['days', 'color', 'apply_limit', 'employee_type', 'department_id', 'location_id']],
-            ['label' => 'Leave Policy', 'class' => 'col-span-6', 'fields' => ['designation_id', 'gender', 'marital', 'f_year', 'apply_for_new_users']],
-            ['label' => 'Leave Policy', 'class' => 'col-span-6', 'fields' => ['carryover_days', 'carryover_uses_limit', 'encashment_based_on', 'forward_default']],
-            ['label' => 'Leave Policy', 'class' => 'col-span-6', 'fields' => ['applicable_from_days', 'accrued_amount', 'accrued_max_days', 'halfday_enable']],
+            ['label' => 'Leave Policy', 'class' => 'col-span-full md:col-span-6', 'fields' => ['days', 'color', 'apply_limit', 'employee_type', 'department_id', 'location_id']],
+            ['label' => 'Leave Policy', 'class' => 'col-span-full md:col-span-6', 'fields' => ['designation_id', 'gender', 'marital', 'f_year', 'apply_for_new_users']],
+            ['label' => 'Leave Policy', 'class' => 'col-span-full md:col-span-6', 'fields' => ['carryover_days', 'carryover_uses_limit', 'encashment_based_on', 'forward_default']],
+            ['label' => 'Leave Policy', 'class' => 'col-span-full md:col-span-6', 'fields' => ['applicable_from_days', 'accrued_amount', 'accrued_max_days', 'halfday_enable']],
         ];
         $structure['filter'] = ['department_id', 'location_id', 'designation_id'];
 
