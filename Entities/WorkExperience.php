@@ -61,10 +61,10 @@ class WorkExperience extends BaseModel
 
         $structure['table'] = ['employee_id', 'company_name', 'job_title', 'from', 'to'];
         $structure['form'] = [
-            ['label' => 'Job Title', 'class' => 'col-span-full', 'fields' => ['job_title']],
-            ['label' => 'Main', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['employee_id', 'company_name']],
-            ['label' => 'From - To', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['from', 'to']],
-            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
+            ['label' => 'Work Experience Job Title', 'class' => 'col-span-full', 'fields' => ['job_title']],
+            ['label' => 'Work Experience Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['employee_id', 'company_name']],
+            ['label' => 'Work Experience From - To', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['from', 'to']],
+            ['label' => 'Work Experience Description', 'class' => 'col-span-full', 'fields' => ['description']],
         ];
         $structure['filter'] = ['employee_id', 'company_name', 'job_title'];
 

@@ -68,9 +68,9 @@ class PayrollPayrunDetail extends BaseModel
 
         $structure['table'] = ['payrun_id', 'pay_cal_id', 'payment_date', 'empid', 'pay_item_id', 'pay_item_amount', 'approve_status'];
         $structure['form'] = [
-            ['label' => 'Payrun', 'class' => 'col-span-full', 'fields' => ['payrun_id']],
-            ['label' => 'Main', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_cal_id', 'payment_date', 'empid', 'pay_item_id']],
-            ['label' => 'Other', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_item_amount', 'pay_item_add_or_deduct', 'note', 'approve_status']],
+            ['label' => 'Payroll Payrun Payrun', 'class' => 'col-span-full', 'fields' => ['payrun_id']],
+            ['label' => 'Payroll Payrun Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_cal_id', 'payment_date', 'empid', 'pay_item_id']],
+            ['label' => 'Payroll Payrun Other', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_item_amount', 'pay_item_add_or_deduct', 'note', 'approve_status']],
         ];
         $structure['filter'] = ['payrun_id', 'pay_cal_id', 'payment_date', 'empid', 'pay_item_id', 'pay_item_amount'];
 

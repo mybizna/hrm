@@ -67,9 +67,9 @@ class LeaveUnpaid extends BaseModel
 
         $structure['table'] = ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id', 'days', 'amount', 'total', 'f_year'];
         $structure['form'] = [
-            ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
-            ['label' => 'Main', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['leave_request_id', 'leave_approval_status_id', 'user_id', 'days']],
-            ['label' => 'Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['amount', 'total', 'f_year']],
+            ['label' => 'Leave Unpaid', 'class' => 'col-span-full', 'fields' => ['leave_id']],
+            ['label' => 'Leave Unpaid Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['leave_request_id', 'leave_approval_status_id', 'user_id', 'days']],
+            ['label' => 'Leave Unpaid Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['amount', 'total', 'f_year']],
         ];
         $structure['filter'] = ['leave_id', 'leave_request_id', 'leave_approval_status_id', 'user_id'];
 

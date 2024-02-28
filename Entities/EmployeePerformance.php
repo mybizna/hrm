@@ -77,9 +77,9 @@ class EmployeePerformance extends BaseModel
 
         $structure['table'] = ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'type', 'performance_date'];
         $structure['form'] = [
-            ['label' => 'Employee', 'class' => 'col-span-full', 'fields' => ['employee_id']],
-            ['label' => 'Details', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['reporting_to', 'job_knowledge', 'work_quality', 'attendance', 'communication', 'dependablity', 'reviewer', 'comments', 'completion_date']],
-            ['label' => 'Others', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['goal_description', 'employee_assessment', 'supervisor', 'supervisor_assessment', 'type', 'performance_date']],
+            ['label' => 'Employee Performance', 'class' => 'col-span-full', 'fields' => ['employee_id']],
+            ['label' => 'Employee Performance Details', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['reporting_to', 'job_knowledge', 'work_quality', 'attendance', 'communication', 'dependablity', 'reviewer', 'comments', 'completion_date']],
+            ['label' => 'Other Employee Performance Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['goal_description', 'employee_assessment', 'supervisor', 'supervisor_assessment', 'type', 'performance_date']],
         ];
         $structure['filter'] = ['employee_id', 'reporting_to', 'completion_date', 'supervisor', 'performance_date'];
 

@@ -70,10 +70,10 @@ class Education extends BaseModel
 
         $structure['table'] = ['employee_id', 'school', 'degree', 'field', 'finished'];
         $structure['form'] = [
-            ['label' => 'School', 'class' => 'col-span-full', 'fields' => ['school']],
-            ['label' => 'Employee', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['employee_id', 'field', 'result']],
-            ['label' => 'Result', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['result_type', 'finished']],
-            ['label' => 'Notes', 'class' => 'col-span-full', 'fields' => ['notes', 'interest']],
+            ['label' => 'School Information', 'class' => 'col-span-full', 'fields' => ['school']],
+            ['label' => 'School Employee', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['employee_id', 'field', 'result']],
+            ['label' => 'School Result', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['result_type', 'finished']],
+            ['label' => 'School Notes', 'class' => 'col-span-full', 'fields' => ['notes', 'interest']],
         ];
         $structure['filter'] = ['employee_id', 'school', 'degree', 'field', 'finished'];
 

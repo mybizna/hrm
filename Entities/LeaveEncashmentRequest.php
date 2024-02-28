@@ -68,9 +68,9 @@ class LeaveEncashmentRequest extends BaseModel
 
         $structure['table'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'];
         $structure['form'] = [
-            ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
-            ['label' => 'Encashment', 'class' => 'col-span-full', 'fields' => ['user_id', 'approved_by', 'approval_status_id', 'encash_days']],
-            ['label' => 'setting', 'class' => 'col-span-full', 'fields' => ['forward_days', 'amount', 'total', 'f_year']],
+            ['label' => 'Leave Encashment Request', 'class' => 'col-span-full', 'fields' => ['leave_id']],
+            ['label' => 'Leave Encashment Request Detail', 'class' => 'col-span-full', 'fields' => ['user_id', 'approved_by', 'approval_status_id', 'encash_days']],
+            ['label' => 'Leave Encashment Request Setting', 'class' => 'col-span-full', 'fields' => ['forward_days', 'amount', 'total', 'f_year']],
         ];
         $structure['filter'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id'];
 

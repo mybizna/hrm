@@ -61,10 +61,10 @@ class Department extends BaseModel
     {
         $structure['table'] = ['title', 'slug', 'lead', 'parent', 'status'];
         $structure['form'] = [
-            ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
-            ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
-            ['label' => 'Lead', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['slug', 'lead']],
-            ['label' => 'Status', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['parent', 'status']],
+            ['label' => 'Department Title', 'class' => 'col-span-full', 'fields' => ['title']],
+            ['label' => 'Department Description', 'class' => 'col-span-full', 'fields' => ['description']],
+            ['label' => 'Department Lead', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['slug', 'lead']],
+            ['label' => 'Department Status', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['parent', 'status']],
         ];
         $structure['filter'] = ['title', 'slug', 'lead', 'status'];
 
