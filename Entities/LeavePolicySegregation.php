@@ -73,8 +73,8 @@ class LeavePolicySegregation extends BaseModel
         $structure['table'] = ['leave_policy_id', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
         $structure['form'] = [
             ['label' => 'Leave Policy', 'class' => 'col-span-full', 'fields' => ['leave_policy_id']],
-            ['label' => 'Jan-Jun', 'class' => 'col-span-full md:col-span-6', 'fields' => ['jan', 'feb', 'mar', 'apr', 'may', 'jun']],
-            ['label' => 'Jul-Dec', 'class' => 'col-span-full md:col-span-6', 'fields' => ['jul', 'aug', 'sep', 'oct', 'nov', 'dec']],
+            ['label' => 'Jan-Jun', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['jan', 'feb', 'mar', 'apr', 'may', 'jun']],
+            ['label' => 'Jul-Dec', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['jul', 'aug', 'sep', 'oct', 'nov', 'dec']],
         ];
         $structure['filter'] = ['leave_policy_id'];
 

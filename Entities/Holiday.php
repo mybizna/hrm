@@ -62,8 +62,8 @@ class Holiday extends BaseModel
         $structure['form'] = [
             ['label' => 'Title', 'class' => 'col-span-full', 'fields' => ['title']],
             ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
-            ['label' => 'Date', 'class' => 'col-span-full md:col-span-6', 'fields' => ['start', 'end']],
-            ['label' => 'Setting', 'class' => 'col-span-full md:col-span-6', 'fields' => ['range_status']],
+            ['label' => 'Date', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['start', 'end']],
+            ['label' => 'Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['range_status']],
         ];
         $structure['filter'] = ['title', 'start', 'end', 'range_status'];
 

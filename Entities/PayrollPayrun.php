@@ -62,8 +62,8 @@ class PayrollPayrun extends BaseModel
         $structure['table'] = ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'];
         $structure['form'] = [
             ['label' => 'Pay Cal', 'class' => 'col-span-full', 'fields' => ['pay_cal_id']],
-            ['label' => 'Payment', 'class' => 'col-span-full md:col-span-6', 'fields' => ['payment_date', 'from_date', 'to_date']],
-            ['label' => 'Date', 'class' => 'col-span-full md:col-span-6', 'fields' => ['approve_status', 'jr_tran_id']],
+            ['label' => 'Payment', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['payment_date', 'from_date', 'to_date']],
+            ['label' => 'Date', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['approve_status', 'jr_tran_id']],
         ];
         $structure['filter'] = ['pay_cal_id', 'payment_date', 'from_date', 'to_date', 'approve_status', 'jr_tran_id'];
 

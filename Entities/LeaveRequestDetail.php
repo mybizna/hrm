@@ -68,7 +68,7 @@ class LeaveRequestDetail extends BaseModel
         $structure['table'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id', 'f_year', 'leave_date'];
         $structure['form'] = [
             ['label' => 'Leave Request', 'class' => 'col-span-full', 'fields' => ['leave_request_id']],
-            ['label' => 'Main', 'class' => 'col-span-full md:col-span-6', 'fields' => ['leave_approval_status_id', 'workingday_status', 'user_id']],
+            ['label' => 'Main', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['leave_approval_status_id', 'workingday_status', 'user_id']],
             ['label' => 'Main', 'class' => 'w-/12', 'fields' => ['f_year', 'leave_date']],
         ];
         $structure['filter'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id'];

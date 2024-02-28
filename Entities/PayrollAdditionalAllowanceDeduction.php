@@ -65,8 +65,8 @@ class PayrollAdditionalAllowanceDeduction extends BaseModel
         $structure['table'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id', 'note'];
         $structure['form'] = [
             ['label' => 'Pay Item', 'class' => 'col-span-full', 'fields' => ['pay_item_id']],
-            ['label' => 'Main', 'class' => 'col-span-full md:col-span-6', 'fields' => ['pay_item_amount', 'empid']],
-            ['label' => 'Other', 'class' => 'col-span-full md:col-span-6', 'fields' => ['pay_item_add_or_deduct', 'payrun_id']],
+            ['label' => 'Main', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_item_amount', 'empid']],
+            ['label' => 'Other', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['pay_item_add_or_deduct', 'payrun_id']],
             ['label' => 'Note', 'class' => 'col-span-full', 'fields' => ['note']],
         ];
         $structure['filter'] = ['pay_item_id', 'pay_item_amount', 'empid', 'pay_item_add_or_deduct', 'payrun_id'];

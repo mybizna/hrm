@@ -72,8 +72,8 @@ class LeaveEntitlement extends BaseModel
         $structure['form'] = [
             ['label' => 'Leave', 'class' => 'col-span-full', 'fields' => ['leave_id']],
             ['label' => 'Description', 'class' => 'col-span-full', 'fields' => ['description']],
-            ['label' => 'Leave Entitlement', 'class' => 'col-span-full md:col-span-6', 'fields' => ['user_id', 'trn_id', 'trn_type', 'f_year']],
-            ['label' => 'Day', 'class' => 'col-span-full md:col-span-6', 'fields' => ['day_in', 'day_out']],
+            ['label' => 'Leave Entitlement', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['user_id', 'trn_id', 'trn_type', 'f_year']],
+            ['label' => 'Day', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['day_in', 'day_out']],
         ];
         $structure['filter'] = ['user_id', 'leave_id', 'trn_id', 'day_in', 'day_out', 'f_year'];
 
