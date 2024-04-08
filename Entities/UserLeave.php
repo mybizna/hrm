@@ -12,14 +12,14 @@ class UserLeave extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = ['user_id', 'request_id', 'title', 'date'];
+    protected $fillable = ['partner_id', 'request_id', 'title', 'date'];
 
     /**
      * The fields that are to be render when performing relationship queries.
      *
      * @var array<string>
      */
-    public $rec_names = ['user_id', 'request_id'];
+    public $rec_names = ['partner_id', 'request_id'];
 
     /**
      * List of tables names that are need in this model during migration.
@@ -46,7 +46,7 @@ class UserLeave extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('number');
-        $this->fields->integer('user_id')->nullable()->html('number');
+        $this->fields->integer('partner_id')->nullable()->html('number');
         $this->fields->integer('request_id')->nullable()->html('number');
         $this->fields->string('title')->nullable()->html('text');
         $this->fields->date('date')->nullable()->html('date');

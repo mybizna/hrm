@@ -12,14 +12,14 @@ class EmployeeRemoteWorkRequest extends BaseModel
      *
      * @var array<string>
      */
-    protected $fillable = ['user_id', 'reason', 'start_date', 'end_date', 'days', 'status'];
+    protected $fillable = ['partner_id', 'reason', 'start_date', 'end_date', 'days', 'status'];
 
     /**
      * The fields that are to be render when performing relationship queries.
      *
      * @var array<string>
      */
-    public $rec_names = ['user_id', 'reason'];
+    public $rec_names = ['partner_id', 'reason'];
 
     /**
      * List of tables names that are need in this model during migration.
@@ -49,7 +49,7 @@ class EmployeeRemoteWorkRequest extends BaseModel
         $statuses_color = ['pending' => 'gray', 'approved' => 'green', 'rejected' => 'red'];
 
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->default(0)->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedBigInteger('partner_id')->default(0)->index('partner_id')->html('recordpicker')->relation(['users']);
         $this->fields->string('reason')->nullable()->html('textarea');
         $this->fields->date('start_date')->html('date');
         $this->fields->date('end_date')->html('date');
@@ -62,8 +62,8 @@ class EmployeeRemoteWorkRequest extends BaseModel
      */
     public function structure($structure): array
     {
-        $structure['table'] = ['user_id', 'start_date', 'end_date', 'days', 'status'];
-        $structure['filter'] = ['user_id', 'start_date', 'end_date', 'status'];
+        $structure['table'] = ['partner_id', 'start_date', 'end_date', 'days', 'status'];
+        $structure['filter'] = ['partner_id', 'start_date', 'end_date', 'status'];
 
         return $structure;
     }

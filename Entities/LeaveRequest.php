@@ -13,7 +13,7 @@ class LeaveRequest extends BaseModel
      * @var array<string>
      */
     protected $fillable = [
-        'user_id', 'leave_id', 'leave_entitlement_id', 'day_status_id', 'days',
+        'partner_id', 'leave_id', 'leave_entitlement_id', 'day_status_id', 'days',
         'start_date', 'end_date', 'reason', 'last_status',
     ];
 
@@ -22,7 +22,7 @@ class LeaveRequest extends BaseModel
      *
      * @var array<string>
      */
-    public $rec_names = ['user_id', 'leave_id'];
+    public $rec_names = ['partner_id', 'leave_id'];
 
     /**
      * List of tables names that are need in this model during migration.
@@ -49,7 +49,7 @@ class LeaveRequest extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedBigInteger('partner_id')->index('partner_id')->html('recordpicker')->relation(['users']);
         $this->fields->unsignedSmallInteger('leave_id')->html('recordpicker')->relation(['hrm', 'leave']);
         $this->fields->unsignedBigInteger('leave_entitlement_id')->default(0)->index('leave_entitlement_id')->html('recordpicker')->relation(['hrm', 'leave_entitlement']);
         $this->fields->unsignedSmallInteger('day_status_id')->default(1)->html('recordpicker')->relation(['hrm', 'day_status']);
@@ -59,8 +59,8 @@ class LeaveRequest extends BaseModel
         $this->fields->text('reason')->nullable()->html('textarea');
         $this->fields->unsignedSmallInteger('last_status')->default(2)->index('last_status')->html('number');
 
-        $this->fields->index(['user_id', 'leave_id'], 'user_leave');
-        $this->fields->index(['user_id', 'leave_entitlement_id'], 'user_entitlement');
+        $this->fields->index(['partner_id', 'leave_id'], 'user_leave');
+        $this->fields->index(['partner_id', 'leave_entitlement_id'], 'user_entitlement');
     }
 
     /**
@@ -69,15 +69,15 @@ class LeaveRequest extends BaseModel
     public function structure($structure): array
     {
 
-        $structure['table'] = ['user_id', 'leave_id', 'leave_entitlement_id', 'day_status_id', 'days', 'start_date', 'end_date', 'last_status'];
+        $structure['table'] = ['partner_id', 'leave_id', 'leave_entitlement_id', 'day_status_id', 'days', 'start_date', 'end_date', 'last_status'];
         $structure['form'] = [
             ['label' => 'Leave Request', 'class' => 'col-span-full', 'fields' => ['leave_id']],
-            ['label' => 'Leave Request Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['user_id', 'leave_entitlement_id', 'day_status_id']],
+            ['label' => 'Leave Request Detail', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['partner_id', 'leave_entitlement_id', 'day_status_id']],
             ['label' => 'Leave Request Dates', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['start_date', 'end_date']],
             ['label' => 'Leave Request Last Status', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['last_status']],
             ['label' => 'Leave Request Reason', 'class' => 'col-span-full', 'fields' => ['reason']],
         ];
-        $structure['filter'] = ['user_id', 'leave_id', 'leave_entitlement_id', 'day_status_id'];
+        $structure['filter'] = ['partner_id', 'leave_id', 'leave_entitlement_id', 'day_status_id'];
 
         return $structure;
     }

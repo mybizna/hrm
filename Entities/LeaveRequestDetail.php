@@ -14,7 +14,7 @@ class LeaveRequestDetail extends BaseModel
      */
     protected $fillable = [
         'leave_request_id', 'leave_approval_status_id', 'workingday_status',
-        'user_id', 'f_year', 'leave_date',
+        'partner_id', 'f_year', 'leave_date',
     ];
 
     /**
@@ -22,7 +22,7 @@ class LeaveRequestDetail extends BaseModel
      *
      * @var array<string>
      */
-    public $rec_names = ['leave_request_id', 'leave_approval_status_id', 'user_id'];
+    public $rec_names = ['leave_request_id', 'leave_approval_status_id', 'partner_id'];
 
     /**
      * List of tables names that are need in this model during migration.
@@ -52,11 +52,11 @@ class LeaveRequestDetail extends BaseModel
         $this->fields->unsignedBigInteger('leave_request_id')->index('leave_request_id')->html('recordpicker')->relation(['hrm', 'leave_request']);
         $this->fields->unsignedBigInteger('leave_approval_status_id')->html('recordpicker')->relation(['hrm', 'leave_approval_status']);
         $this->fields->unsignedTinyInteger('workingday_status')->default(1)->html('number');
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedBigInteger('partner_id')->index('partner_id')->html('recordpicker')->relation(['users']);
         $this->fields->smallInteger('f_year')->html('number');
         $this->fields->integer('leave_date')->html('date');
 
-        $this->fields->index(['user_id', 'f_year', 'leave_date'], 'user_fyear_leave');
+        $this->fields->index(['partner_id', 'f_year', 'leave_date'], 'user_fyear_leave');
     }
 
     /**
@@ -65,13 +65,13 @@ class LeaveRequestDetail extends BaseModel
     public function structure($structure): array
     {
 
-        $structure['table'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id', 'f_year', 'leave_date'];
+        $structure['table'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'partner_id', 'f_year', 'leave_date'];
         $structure['form'] = [
             ['label' => 'Leave Request Detail', 'class' => 'col-span-full', 'fields' => ['leave_request_id']],
-            ['label' => 'Leave Request Detail Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['leave_approval_status_id', 'workingday_status', 'user_id']],
+            ['label' => 'Leave Request Detail Setting', 'class' => 'col-span-full  md:col-span-6 md:pr-2', 'fields' => ['leave_approval_status_id', 'workingday_status', 'partner_id']],
             ['label' => 'Leave Request Detail Date', 'class' => 'w-/12', 'fields' => ['f_year', 'leave_date']],
         ];
-        $structure['filter'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'user_id'];
+        $structure['filter'] = ['leave_request_id', 'leave_approval_status_id', 'workingday_status', 'partner_id'];
 
         return $structure;
     }

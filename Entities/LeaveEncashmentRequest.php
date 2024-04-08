@@ -13,7 +13,7 @@ class LeaveEncashmentRequest extends BaseModel
      * @var array<string>
      */
     protected $fillable = [
-        'user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days',
+        'partner_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days',
         'forward_days', 'amount', 'total', 'f_year',
     ];
 
@@ -22,7 +22,7 @@ class LeaveEncashmentRequest extends BaseModel
      *
      * @var array<string>
      */
-    public $rec_names = ['user_id', 'leave_id'];
+    public $rec_names = ['partner_id', 'leave_id'];
 
     /**
      * List of tables names that are need in this model during migration.
@@ -49,7 +49,7 @@ class LeaveEncashmentRequest extends BaseModel
         $this->fields = $table ?? new Blueprint($this->table);
 
         $this->fields->bigIncrements('id')->html('text');
-        $this->fields->unsignedBigInteger('user_id')->index('user_id')->html('recordpicker')->relation(['users']);
+        $this->fields->unsignedBigInteger('partner_id')->index('partner_id')->html('recordpicker')->relation(['users']);
         $this->fields->unsignedSmallInteger('leave_id')->index('leave_id')->html('recordpicker')->relation(['hrm', 'leave']);
         $this->fields->unsignedBigInteger('approved_by')->nullable()->html('recordpicker')->relation(['users']);
         $this->fields->unsignedTinyInteger('approval_status_id')->default(1)->html('recordpicker')->relation(['hrm', 'approval_status']);
@@ -66,13 +66,13 @@ class LeaveEncashmentRequest extends BaseModel
     public function structure($structure): array
     {
 
-        $structure['table'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'];
+        $structure['table'] = ['partner_id', 'leave_id', 'approved_by', 'approval_status_id', 'encash_days', 'forward_days', 'amount', 'total', 'f_year'];
         $structure['form'] = [
             ['label' => 'Leave Encashment Request', 'class' => 'col-span-full', 'fields' => ['leave_id']],
-            ['label' => 'Leave Encashment Request Detail', 'class' => 'col-span-full', 'fields' => ['user_id', 'approved_by', 'approval_status_id', 'encash_days']],
+            ['label' => 'Leave Encashment Request Detail', 'class' => 'col-span-full', 'fields' => ['partner_id', 'approved_by', 'approval_status_id', 'encash_days']],
             ['label' => 'Leave Encashment Request Setting', 'class' => 'col-span-full', 'fields' => ['forward_days', 'amount', 'total', 'f_year']],
         ];
-        $structure['filter'] = ['user_id', 'leave_id', 'approved_by', 'approval_status_id'];
+        $structure['filter'] = ['partner_id', 'leave_id', 'approved_by', 'approval_status_id'];
 
         return $structure;
     }
