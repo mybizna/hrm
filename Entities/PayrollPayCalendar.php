@@ -50,4 +50,15 @@ class PayrollPayCalendar extends BaseModel
         $this->fields->string('pay_calendar_type', 16)->html('text');
     }
 
+
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
+
 }

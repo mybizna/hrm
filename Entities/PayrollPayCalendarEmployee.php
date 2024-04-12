@@ -51,4 +51,15 @@ class PayrollPayCalendarEmployee extends BaseModel
         $this->fields->bigInteger('empid')->html('number');
     }
 
+
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
+
 }

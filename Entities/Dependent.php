@@ -52,4 +52,15 @@ class Dependent extends BaseModel
         $this->fields->string('relation', 100)->nullable()->html('textarea');
         $this->fields->date('dob')->nullable()->html('date');
     }
+
+
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
 }

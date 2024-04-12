@@ -51,4 +51,15 @@ class UserLeave extends BaseModel
         $this->fields->string('title')->nullable()->html('text');
         $this->fields->date('date')->nullable()->html('date');
     }
+
+
+    /**
+     * Define rights for this model.
+     *
+     * @return array
+     */
+    public function rights(): array
+    {
+
+    }
 }
