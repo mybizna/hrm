@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Hrm\Entities\Data;
+namespace Modules\Hrm\Models\Data;
 
 use Modules\Base\Classes\Datasetter;
 
@@ -8,7 +8,7 @@ class Department
 {
     /**
      * Set ordering of the Class to be migrated.
-     * 
+     *
      * @var int
      */
     public $ordering = 1;
